@@ -4,11 +4,11 @@
   
     
     <entry>
-      <title>redis</title>
-      <link href="/2022/01/24/2022-01-24-redis/"/>
-      <url>/2022/01/24/2022-01-24-redis/</url>
+      <title>ActiveMQ</title>
+      <link href="/2022/01/24/ActiveMQ/"/>
+      <url>/2022/01/24/ActiveMQ/</url>
       
-        <content type="html"><![CDATA[<h1 id="NOSQL数据库"><a href="#NOSQL数据库" class="headerlink" title="NOSQL数据库"></a>NOSQL数据库</h1><h2 id="技术的分类"><a href="#技术的分类" class="headerlink" title="技术的分类"></a>技术的分类</h2><p>1、解决功能性的问题：Java、Jsp、RDBMS、Tomcat、HTML、Linux、JDBC、SVN</p><p>2、解决扩展性的问题：Struts、Spring、SpringMVC、Hibernate、Mybatis</p><p>3、解决性能的问题：NoSQL、Java线程、Hadoop、Nginx、MQ、ElasticSearch</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="1、简介"><a href="#1、简介" class="headerlink" title="1、简介"></a>1、简介</h2><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220124221656632.png" alt="image-20220124221656632"></p><p>解耦、异步、削峰</p><p>分布式系统</p><p>只要消息发送，尽量异步</p><p>只要解耦，尽量引入消息中间件</p><h2 id="2、编码"><a href="#2、编码" class="headerlink" title="2、编码"></a>2、编码</h2><p>JMS编码架构</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220124221810182.png" alt="image-20220124221810182"></p><p>原生API：</p><p>生产者：</p><p>连接工厂——获取连接——创建会话session</p><p>创建目的地（队列、主题）——创建消息生产者</p><p>消息生产者发送消息</p><p>（1）创建消息</p><p>（2）通过生产者发送</p><p>关闭资源（倒序：生产者、session、连接）</p><p>消费者：</p><p>连接工厂——获取连接——创建会话session</p><p>创建目的地（队列、主题）——创建消息消费者</p><p>消费生产者接收消息——接收消息（一直型、定时型）、消息类型要一致</p><p>关闭资源（倒序：消费者、session、连接）</p><p>1、receive</p><p>2、监听</p><p>队列同时监听：轮询</p><p>主题：先订阅再有生产消息</p><h2 id="3、JMS"><a href="#3、JMS" class="headerlink" title="3、JMS"></a>3、JMS</h2><p>JavaEE</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220124222038405.png" alt="image-20220124222038405"></p><p>JMS：java消息服务</p><p>消息头</p><p>消息体</p><p>消息属性</p><p>可靠性：持久化、事务、签收、集群</p><h2 id="4、Broker"><a href="#4、Broker" class="headerlink" title="4、Broker"></a>4、Broker</h2><h2 id="5、spring-boot整合"><a href="#5、spring-boot整合" class="headerlink" title="5、spring boot整合"></a>5、spring boot整合</h2><p>间隔定投</p><p>注解监听</p><h2 id="6、传输协议"><a href="#6、传输协议" class="headerlink" title="6、传输协议"></a>6、传输协议</h2><p>种类</p><p>NIO + 多协议</p><h2 id="7、消息存储和持久化"><a href="#7、消息存储和持久化" class="headerlink" title="7、消息存储和持久化"></a>7、消息存储和持久化</h2><p>AMQ</p><p>KahaDB：事务日志 + 索引文件</p><p>Db.log：存储消息、Db.data：B树索引、Lock：文件锁</p><p>LevelDB：基于文件的本地数据库：redis aof</p><p>JDBC + Mysql：</p><p>建库，自动建表：消息表、订阅关系表、记录master表</p><p>JDBC With Journal：</p><p>存到高速缓存日志，减少数据库压力</p><h2 id="8、多节点集群"><a href="#8、多节点集群" class="headerlink" title="8、多节点集群"></a>8、多节点集群</h2><p>Zookeeper和Replicated LevelDB集群</p><p>原理：对外暴露master</p><p>主从复制 + Zookeeper集群</p><p>已被舍弃</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220124222731107.png" alt="image-20220124222731107"></p><h2 id="9、高级特性、面试考点"><a href="#9、高级特性、面试考点" class="headerlink" title="9、高级特性、面试考点"></a>9、高级特性、面试考点</h2><p>异步投递：</p><p>发送是否成功：写回调函数：成功、失败的信息</p><p>延时投递和定时投递：消息头属性中设置</p><p>分发策略</p><p>消息重试机制：消息侧回滚、消费侧没有commit等</p><p>有毒消息：重发超过6次，放到DLQ（死信队列）</p><p>死信队列：查看出错消息，人工干预修复，可自定义</p><p>防止重复调用，幂等性：数据库主键、redis key</p>]]></content>
       
       
       <categories>
@@ -20,7 +20,7 @@
       
         <tags>
             
-            <tag> SpringCloud Alibaba </tag>
+            <tag> ActiveMQ </tag>
             
         </tags>
       
@@ -29,7 +29,182 @@
     
     
     <entry>
-      <title>SpringCloud Alibaba分布式架构</title>
+      <title>Spring Security</title>
+      <link href="/2022/01/24/nginx%20-%20%E5%89%AF%E6%9C%AC/"/>
+      <url>/2022/01/24/nginx%20-%20%E5%89%AF%E6%9C%AC/</url>
+      
+        <content type="html"><![CDATA[<h2 id="1、基本原理"><a href="#1、基本原理" class="headerlink" title="1、基本原理"></a>1、基本原理</h2><p>认证</p><p>授权</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220124220153579.png" alt="image-20220124220153579"></p><h2 id="2、web权限"><a href="#2、web权限" class="headerlink" title="2、web权限"></a>2、web权限</h2><p>查询数据库认证</p><p>自定义登录页面</p><p>方法注解</p><p>注销</p><p>原理分析</p><p>CSRF</p><h2 id="3、微服务权限"><a href="#3、微服务权限" class="headerlink" title="3、微服务权限"></a>3、微服务权限</h2><p>流程</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220124220433500.png" alt="image-20220124220433500"></p><p>数据库分表</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220124220446710.png" alt="image-20220124220446710"></p><p>JWT：JWT 头、内容、签名哈希</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220124220917745.png" alt="image-20220124220917745"></p><h2 id="4、源码解析"><a href="#4、源码解析" class="headerlink" title="4、源码解析"></a>4、源码解析</h2><p><strong>Spring Security</strong> 采取<strong>过滤链</strong>实现认证与授权</p><p>认证流程</p><p>权限访问流程</p><p>请求间共享认证信息</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 分类 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Spring Security </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>nginx</title>
+      <link href="/2022/01/24/nginx/"/>
+      <url>/2022/01/24/nginx/</url>
+      
+        <content type="html"><![CDATA[<h2 id="1、概念"><a href="#1、概念" class="headerlink" title="1、概念"></a>1、概念</h2><p>nginx</p><p>正向代理</p><p>反向代理</p><p>负载均衡</p><p>动静分离</p><h2 id="2、配置"><a href="#2、配置" class="headerlink" title="2、配置"></a>2、配置</h2><p>高可用集群（主从模式）</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220124215235206.png" alt="image-20220124215235206"></p><p>高可用集群（双主模式）</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220124215307904.png" alt="image-20220124215307904"></p><h2 id="3、原理"><a href="#3、原理" class="headerlink" title="3、原理"></a>3、原理</h2><p><img src="https://img-blog.csdnimg.cn/20191103213303224.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9hcml0aC5ibG9nLmNzZG4ubmV0,size_16,color_FFFFFF,t_70" alt="Nginx 整体架构"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 分类 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> nginx </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>zookeeper</title>
+      <link href="/2022/01/24/zookeeper/"/>
+      <url>/2022/01/24/zookeeper/</url>
+      
+        <content type="html"><![CDATA[<h2 id="1、入门"><a href="#1、入门" class="headerlink" title="1、入门"></a>1、入门</h2><p>概述：工作机制</p><p>数据结构：ZNode 树型文件系统</p><p>统一命名服务、统一配置管理、统一集群管理、服务器节点动态上下</p><p>线、软负载均衡等</p><h2 id="2、安装"><a href="#2、安装" class="headerlink" title="2、安装"></a>2、安装</h2><h2 id="3、集群"><a href="#3、集群" class="headerlink" title="3、集群"></a>3、集群</h2><p>选举机制：</p><p>第一次启动</p><p>非第一次启动：任期id——事务id——id</p><p>节点类型：</p><p>持久、短暂、有序号、无序号</p><p>监听器</p><p>写数据原理：</p><p>发给leader</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220124213707456.png" alt="image-20220124213707456"></p><p>发给follower</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220124213720276.png" alt="image-20220124213720276"></p><h2 id="4、案例"><a href="#4、案例" class="headerlink" title="4、案例"></a>4、案例</h2><p>服务器动态上下线</p><p>分布式锁</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220124213847011.png" alt="image-20220124213847011"></p><p>Curator框架实现分布式锁</p><h2 id="5、源码"><a href="#5、源码" class="headerlink" title="5、源码"></a>5、源码</h2><p>选举机制：第一次、非第一次</p><p>分布式一致性：</p><p>Paxos算法</p><p>ZAB协议：消息广播、崩溃恢复</p><p>异常发生——leader选举 + 数据恢复</p><p>数据恢复——一个follower所有事务提交之后才变为follower</p><p>CAP理论：保证CP</p><p>持久化源码</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220124214406672.png" alt="image-20220124214406672"></p><p>序列化源码</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220124214429678.png" alt="image-20220124214429678"></p><p>服务端初始化源码-启动脚本</p><p>初始化-解析参数</p><p>初始化-过期快照删除</p><p>初始化-通信初始化</p><p>服务端加载数据源码</p><p>选举-选举准备</p><p>选举-选举执行</p><p>Follower 和 Leader 状态同步源码</p><p>状态同步细节</p><p>Leader启动</p><p>Follower启动</p><p>客户端启动</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220124214747431.png" alt="image-20220124214747431"></p><p>选举</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 分类 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> zookeeper </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>dubbo</title>
+      <link href="/2022/01/24/dubbo/"/>
+      <url>/2022/01/24/dubbo/</url>
+      
+        <content type="html"><![CDATA[<h2 id="1、概念"><a href="#1、概念" class="headerlink" title="1、概念"></a>1、概念</h2><p>分布式系统演变</p><p>RPC原理</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220124212540495.png" alt="image-20220124212540495"></p><p>dubbo核心原理</p><p>监控中心</p><h2 id="2、dubbo配置"><a href="#2、dubbo配置" class="headerlink" title="2、dubbo配置"></a>2、dubbo配置</h2><h2 id="3、高可用"><a href="#3、高可用" class="headerlink" title="3、高可用"></a>3、高可用</h2><p>zookeeper</p><p>集群负载均衡</p><p>hystrix、服务熔断、服务降级</p><h2 id="4、原理"><a href="#4、原理" class="headerlink" title="4、原理"></a>4、原理</h2><h3 id="RPC原理："><a href="#RPC原理：" class="headerlink" title="RPC原理："></a>RPC原理：</h3><p>一次完整的RPC调用流程（同步调用，异步另说）如下： </p><p><strong>1）服务消费方（client）调用以本地调用方式调用服务；</strong> </p><p>2）client stub接收到调用后负责将方法、参数等组装成能够进行网络传输的消息体； </p><p>3）client stub找到服务地址，并将消息发送到服务端； </p><p>4）server stub收到消息后进行解码； </p><p>5）server stub根据解码结果调用本地的服务； </p><p>6）本地服务执行并将结果返回给server stub； </p><p>7）server stub将返回结果打包成消息并发送至消费方； </p><p>8）client stub接收到消息，并进行解码； </p><p><strong>9）服务消费方得到最终结果。</strong></p><p>RPC框架的目标就是要2~8这些步骤都封装起来，这些细节对用户来说是透明的，不可见的。</p><h3 id="netty通信原理"><a href="#netty通信原理" class="headerlink" title="netty通信原理"></a>netty通信原理</h3><p>BIO</p><p>NIO</p><h3 id="dubbo原理"><a href="#dubbo原理" class="headerlink" title="dubbo原理"></a>dubbo原理</h3><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220124212904106.png" alt="image-20220124212904106"></p><p>框架设计</p><p>启动解析、加载配置信息</p><p>服务暴露</p><p>服务引用</p><p>服务调用</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 分类 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> dubbo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>elasticsearch</title>
+      <link href="/2022/01/24/elasticsearch/"/>
+      <url>/2022/01/24/elasticsearch/</url>
+      
+        <content type="html"><![CDATA[<h1 id="入门-HTTP"><a href="#入门-HTTP" class="headerlink" title="入门-HTTP"></a>入门-HTTP</h1><h1 id="入门-JavaAPI"><a href="#入门-JavaAPI" class="headerlink" title="入门-JavaAPI"></a>入门-JavaAPI</h1><h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><h1 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h1><p>进阶：文档、字段、映射、分片、副本、分配</p><p>系统架构：</p><p>选举主节点，master调度管理集群</p><p>P1P2P3分片、R2R0R1副本，不在一个机器上</p><p>每一个分片就是底层的LUCENE的索引</p><p>分布式集群：</p><p>故障转移、水平扩容、应对故障</p><p>路由计算 &amp; 分片控制</p><p>数据写流程</p><p>数据读流程</p><p>更新流程 &amp; 批量操作流程</p><p>倒排索引</p><p>文档搜索</p><p>文档刷新 &amp; 文档刷写 &amp; 文档合并</p><p>文档分析</p><p>文档处理</p><p>文档展示-Kibana</p><h1 id="框架集成"><a href="#框架集成" class="headerlink" title="框架集成"></a>框架集成</h1><p>SpringData-整体介绍</p><p>文档搜索</p><p>Spark streaming</p><p>Flink</p><h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><p>硬件选择</p><p>分片策略</p><p>路由选择</p><p>写入速度优化</p><p>重要配置</p><h1 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h1><p>为什么使用elasticsearch</p><p>Master选举</p><p>集群脑裂</p><p>索引文档的流程</p><p>更新和删除文档</p><p>搜索流程</p><p>Linux设置部署优化</p><p>GC方面，注意</p><p>上亿数据的聚合实现</p><p>并发情况下，如何保证读写—致</p><p>监控</p><p>字典树</p><p>集群、节点、索引、文档、类型</p><p>倒排索引</p><h1 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h1><p>为什么使用es</p><p>概念：集群、节点、索引、文档、类型</p><p>基本操作：索引、更新、删除、搜索</p><p>集群：master选举、脑裂</p><p>字典树</p><p>倒排索引</p><p>优化：linux部署设置、GC、</p><p>海量数据：如何聚合</p><p>高并发：如何保证读写一致</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 分类 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> elasticsearch </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>docker</title>
+      <link href="/2022/01/24/docker/"/>
+      <url>/2022/01/24/docker/</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/docker%E6%80%BB%E7%BB%93.png" alt="docker总结"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 分类 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>redis</title>
+      <link href="/2022/01/24/redis/"/>
+      <url>/2022/01/24/redis/</url>
+      
+        <content type="html"><![CDATA[<h2 id="nosql"><a href="#nosql" class="headerlink" title="nosql"></a>nosql</h2><p>Memcache</p><p>Redis</p><p>MongoDB</p><h2 id="redis简介"><a href="#redis简介" class="headerlink" title="redis简介"></a>redis简介</h2><p>单线程+多路IO复用</p><p>应用场景：</p><p>缓存、session共享、持久化</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220124203929901.png" alt="image-20220124203929901"></p><h2 id="五大常用数据类型"><a href="#五大常用数据类型" class="headerlink" title="五大常用数据类型"></a>五大常用数据类型</h2><p>String</p><p>List</p><p>Set</p><p>Hash</p><p>Zset</p><h2 id="三大新数据类型"><a href="#三大新数据类型" class="headerlink" title="三大新数据类型"></a>三大新数据类型</h2><h2 id="redis配置文件"><a href="#redis配置文件" class="headerlink" title="redis配置文件"></a>redis配置文件</h2><p>网络连接：心跳检测、连接时长</p><p>通用：日志级别、库</p><p>存储策略</p><h2 id="reids的发布和订阅"><a href="#reids的发布和订阅" class="headerlink" title="reids的发布和订阅"></a>reids的发布和订阅</h2><p>Bitmaps：统计</p><p>HyperLogLog：基数计算：不重复数据个数的计算</p><p>Geographic：地理</p><h2 id="Jedis、RedisTemplate"><a href="#Jedis、RedisTemplate" class="headerlink" title="Jedis、RedisTemplate"></a>Jedis、RedisTemplate</h2><h2 id="事务、锁机制、秒杀"><a href="#事务、锁机制、秒杀" class="headerlink" title="事务、锁机制、秒杀"></a>事务、锁机制、秒杀</h2><p>事务：</p><p>Multi、Exec、discard</p><p>悲观锁、乐观锁</p><p>监视key</p><p>特点：单独的隔离操作、没有隔离级别的概念、不保证原子性</p><p>秒杀：</p><p>乐观锁 + 连接池 + LUA脚本（原子化）  解决库存遗留问题</p><h2 id="持久化RDB、AOF"><a href="#持久化RDB、AOF" class="headerlink" title="持久化RDB、AOF"></a>持久化RDB、AOF</h2><p>RDB：临时文件 –&gt; 覆盖</p><p>AOF：只记录写的操作，只能追加，redis读取这些操作重写构建数据</p><p>写操作追加到缓存区，根据策略进行持久化同步，根据重写策略进行重写压缩</p><h2 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h2><p>一主二仆</p><p>薪火相传：分组传递</p><p>宕机上位</p><p>连接时：全量复制</p><p>同步时：增量复制</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220124205643714.png" alt="image-20220124205643714"></p><p>主从复制原理</p><p>哨兵模式：</p><p>Master down ，sentinel自动监控 —&gt; 选举某从机作为主机</p><p>Master 再次上线后 变为从机</p><p>选举规则：</p><p>1、Priority最小</p><p>2、偏移量最全</p><p>3、Runid最小的（随机生成）</p><h2 id="Redis集群"><a href="#Redis集群" class="headerlink" title="Redis集群"></a>Redis集群</h2><p>无中心化</p><p>集群节点的插槽计算：计算key所属的插槽，平均分摊压力</p><p>哈希槽分区</p><h2 id="应用问题"><a href="#应用问题" class="headerlink" title="应用问题"></a>应用问题</h2><p>缓存穿透</p><p>解决方案：</p><p>缓存空值（设置过期时间）、设置白名单（bitmaps）</p><p>布隆过滤器（底层bitmap）、实时监控redis（设置黑名单）</p><p>缓存击穿</p><p>解决方案：</p><p>预先设置热门key（增加时长）、实时调整（频繁访问key增加时长）</p><p>锁（先上锁，查完数据库放锁）</p><p>缓存雪崩</p><p>构建多层缓存（多级缓存处理）、锁和队列（不适合高并发）</p><p>设置过期标志（更新时长）、分散缓存失效时间（过期时间不同）</p><p>分布式锁</p><p>reids分布式锁：</p><p>setnx  同时设置过期时间</p><p>Redisson</p><p>总结：</p><p>Uuid + 过期时间 + 加锁</p><p>Lua释放锁（uuid比较）</p><h2 id="Redis6新功能"><a href="#Redis6新功能" class="headerlink" title="Redis6新功能"></a>Redis6新功能</h2><p>Acl用户权限</p><p>Io多线程：网络数据读写和协议解析</p><p>工具支持cluster</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 分类 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> redis </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>SpringCloud + SpringCloud Alibaba分布式集群总结</title>
       <link href="/2022/01/24/SpringCoud%20Alibaba/"/>
       <url>/2022/01/24/SpringCoud%20Alibaba/</url>
       
