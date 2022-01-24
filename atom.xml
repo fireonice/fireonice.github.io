@@ -6,7 +6,7 @@
   <link href="https://fireonice.github.io/atom.xml" rel="self"/>
   
   <link href="https://fireonice.github.io/"/>
-  <updated>2022-01-24T03:48:47.152Z</updated>
+  <updated>2022-01-24T11:52:01.420Z</updated>
   <id>https://fireonice.github.io/</id>
   
   <author>
@@ -17,163 +17,44 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
-    <link href="https://fireonice.github.io/2022/01/24/hello-world%20-%20%E5%89%AF%E6%9C%AC%20(6)/"/>
-    <id>https://fireonice.github.io/2022/01/24/hello-world%20-%20%E5%89%AF%E6%9C%AC%20(6)/</id>
-    <published>2022-01-24T09:13:38.352Z</published>
-    <updated>2022-01-24T03:48:47.152Z</updated>
+    <title>redis</title>
+    <link href="https://fireonice.github.io/2022/01/24/2022-01-24-redis/"/>
+    <id>https://fireonice.github.io/2022/01/24/2022-01-24-redis/</id>
+    <published>2022-01-24T11:47:41.921Z</published>
+    <updated>2022-01-24T11:52:01.420Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
-      
+    <content type="html"><![CDATA[<h1 id="NOSQL数据库"><a href="#NOSQL数据库" class="headerlink" title="NOSQL数据库"></a>NOSQL数据库</h1><h2 id="技术的分类"><a href="#技术的分类" class="headerlink" title="技术的分类"></a>技术的分类</h2><p>1、解决功能性的问题：Java、Jsp、RDBMS、Tomcat、HTML、Linux、JDBC、SVN</p><p>2、解决扩展性的问题：Struts、Spring、SpringMVC、Hibernate、Mybatis</p><p>3、解决性能的问题：NoSQL、Java线程、Hadoop、Nginx、MQ、ElasticSearch</p>]]></content>
     
     
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://fireonice.github.io/2022/01/24/hello-world%20-%20%E5%89%AF%E6%9C%AC%20(5)/"/>
-    <id>https://fireonice.github.io/2022/01/24/hello-world%20-%20%E5%89%AF%E6%9C%AC%20(5)/</id>
-    <published>2022-01-24T09:13:38.322Z</published>
-    <updated>2022-01-24T03:48:47.152Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://fireonice.github.io/2022/01/24/hello-world%20-%20%E5%89%AF%E6%9C%AC%20(4)/"/>
-    <id>https://fireonice.github.io/2022/01/24/hello-world%20-%20%E5%89%AF%E6%9C%AC%20(4)/</id>
-    <published>2022-01-24T09:13:37.790Z</published>
-    <updated>2022-01-24T03:48:47.152Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://fireonice.github.io/2022/01/24/hello-world%20-%20%E5%89%AF%E6%9C%AC%20(3)/"/>
-    <id>https://fireonice.github.io/2022/01/24/hello-world%20-%20%E5%89%AF%E6%9C%AC%20(3)/</id>
-    <published>2022-01-24T09:13:37.746Z</published>
-    <updated>2022-01-24T03:48:47.152Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://fireonice.github.io/2022/01/24/hello-world%20-%20%E5%89%AF%E6%9C%AC%20(2)/"/>
-    <id>https://fireonice.github.io/2022/01/24/hello-world%20-%20%E5%89%AF%E6%9C%AC%20(2)/</id>
-    <published>2022-01-24T09:13:37.380Z</published>
-    <updated>2022-01-24T03:48:47.152Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://fireonice.github.io/2022/01/24/hello-world%20-%20%E5%89%AF%E6%9C%AC/"/>
-    <id>https://fireonice.github.io/2022/01/24/hello-world%20-%20%E5%89%AF%E6%9C%AC/</id>
-    <published>2022-01-24T09:13:37.125Z</published>
-    <updated>2022-01-24T03:48:47.152Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>test 1</title>
-    <link href="https://fireonice.github.io/2022/01/24/test/"/>
-    <id>https://fireonice.github.io/2022/01/24/test/</id>
-    <published>2022-01-24T04:26:27.134Z</published>
-    <updated>2022-01-24T06:51:57.917Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="AA"><a href="#AA" class="headerlink" title="AA"></a>AA</h1><h2 id="1-1"><a href="#1-1" class="headerlink" title="1.1"></a>1.1</h2><h2 id="1-2"><a href="#1-2" class="headerlink" title="1.2"></a>1.2</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="string">port:8181</span></span><br></pre></td></tr></table></figure><h1 id="BB"><a href="#BB" class="headerlink" title="BB"></a>BB</h1>]]></content>
-    
-    
-    <summary type="html">描述</summary>
+    <summary type="html">SpringCloud Alibaba</summary>
     
     
     
     <category term="分类" scheme="https://fireonice.github.io/categories/%E5%88%86%E7%B1%BB/"/>
     
     
-    <category term="标签名" scheme="https://fireonice.github.io/tags/%E6%A0%87%E7%AD%BE%E5%90%8D/"/>
+    <category term="SpringCloud Alibaba" scheme="https://fireonice.github.io/tags/SpringCloud-Alibaba/"/>
     
   </entry>
   
   <entry>
-    <title>Hello World</title>
-    <link href="https://fireonice.github.io/2022/01/24/hello-world/"/>
-    <id>https://fireonice.github.io/2022/01/24/hello-world/</id>
-    <published>2022-01-24T03:48:47.152Z</published>
-    <updated>2022-01-24T03:48:47.152Z</updated>
+    <title>SpringCloud Alibaba分布式架构</title>
+    <link href="https://fireonice.github.io/2022/01/24/SpringCoud%20Alibaba/"/>
+    <id>https://fireonice.github.io/2022/01/24/SpringCoud%20Alibaba/</id>
+    <published>2022-01-24T11:22:10.482Z</published>
+    <updated>2022-01-24T11:27:53.156Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="eureka："><a href="#eureka：" class="headerlink" title="eureka："></a>eureka：</h2><p>单机eureka、集群eureka</p><p>resttemplate + @loadbalance 负载均衡 调用</p><h2 id="zookeeper："><a href="#zookeeper：" class="headerlink" title="zookeeper："></a>zookeeper：</h2><p>linux docker部署zookeeper，配置注册地址</p><p>resttemplate + @loadbalance 负载均衡 调用</p><h2 id="consul："><a href="#consul：" class="headerlink" title="consul："></a>consul：</h2><p>命令本地启动consul，8500端口页面</p><p>resttemplate + @loadbalance 负载均衡 调用</p><h2 id="Ribbon："><a href="#Ribbon：" class="headerlink" title="Ribbon："></a>Ribbon：</h2><p>Irule配置或自定义负载均衡算法，@Ribbonclient配置调用的服务和算法</p><p>手写轮询算法，CAS锁</p><h2 id="Openfeign："><a href="#Openfeign：" class="headerlink" title="Openfeign："></a>Openfeign：</h2><p>接口注解调用，默认支持ribbon自带负载均衡</p><p>ribbon超时控制，日志显示</p><h2 id="Hystrix："><a href="#Hystrix：" class="headerlink" title="Hystrix："></a>Hystrix：</h2><p>服务降级：@HystrixCommand，调用中出现错误、超时、宕机等，启用兜底方法，fallback方法分离</p><p>服务熔断：配置熔断情况，时间窗口，请求阈值，错误百分比阈值等，half open</p><p>hystrixDashboard可视化监控，监控服务访问</p><h2 id="Zuul、Gataway："><a href="#Zuul、Gataway：" class="headerlink" title="Zuul、Gataway："></a>Zuul、Gataway：</h2><p>路由转发、断言匹配、执行过滤器链，支持负载均衡</p><p>作为中转站进行路由映射，过滤器生命周期pre、post，常用过滤器：请求头、参数匹配等，自定义过滤器</p><h2 id="Config："><a href="#Config：" class="headerlink" title="Config："></a>Config：</h2><p>服务端实时获取Github配置，文件配置映射，生产模式配置，客户端父子配置文件，设置文件映射和配置中心</p><p>Post请求动态刷新客户端配置</p><h2 id="Bus："><a href="#Bus：" class="headerlink" title="Bus："></a>Bus：</h2><p>支持RabbitMQ和kafka，自动进行消息监听配置中心变化，全局订阅实现配置更新，称为消息总线</p><p>加入bus依赖，rabbitmq配置，自动监听，一次发送处处生效</p><p>定点刷新，post附带服务端端口号</p><h2 id="Stream："><a href="#Stream：" class="headerlink" title="Stream："></a>Stream：</h2><p>统一底层差异，设置生产者、消费者、监听进行消息发送</p><p>分组消费，配置group，支持消息持久化</p><h2 id="Sleuth："><a href="#Sleuth：" class="headerlink" title="Sleuth："></a>Sleuth：</h2><p>zipkin可视化监控，本地命令启动，全局链路id关联调用链路</p><p>配置zikpin地址，采样率设置</p><h2 id="Nacos："><a href="#Nacos：" class="headerlink" title="Nacos："></a>Nacos：</h2><p>nacos服务注册中心，本地命令启动，支持CP、AP切换</p><p>作为配置中心，加入配置匹配格式，配置名称空间，分组等进行匹配，自带动态刷新</p><p>namespace：环境、group：分组，不同微服务模块、service：微服务模块、cluster：集群，杭州虚拟划分，实现容灾，instance：微服务实例</p><p>持久化配置，默认嵌入式数据库derby，连接到mysql即可</p><p>nacos集群，linux docker部署，请求到Nginx集群，nacos集群，底层db集群</p><h2 id="Sentinel："><a href="#Sentinel：" class="headerlink" title="Sentinel："></a>Sentinel：</h2><p>sentinel可视化控制台，本地命令启动，yaml配置地址，默认懒加载</p><p>流控规则，</p><p>统计规则：慢调用比例，异常比例、异常数，</p><p>流控模式：直接、关联，关联的资源达到阈值限流自己、链路，统计指定资源到当前资源，对请求来源限流，</p><p>流控效果：直接、预热，阈值从冷启动因子经过预热时长后达到正常阈值，秒杀应用、排队等待，匀速排队，阈值必须为qps，处理间隔突发的流量</p><p>服务降级，降级策略：RT平均响应时间、异常比例、异常数，分钟统计，支持半开状态</p><p>热点key限流，支持参数索引，排除特殊参数。系统规则，全局限流</p><p>@SentinelResource，blockhandler：限流兜底方法，自定义限流处理逻辑，代码分离</p><p>服务熔断，整合ribbon，加上fallback即可，整合feign，消费者侧接口注解处fallback</p><p>规则持久化，yaml配置datasource，地址指向nacos，文件匹配</p><h2 id="seata："><a href="#seata：" class="headerlink" title="seata："></a>seata：</h2><p>ID+三组件，TC全局事务协调器，TM事务提交回滚，RM分支事务、分支注册、状态汇报等</p><p>seata service本机命令启动，配置文件，数据库，nacos地址</p><p>mysql建表，seata事务表，业务数据库回滚日志表</p><p>微服务配置，文件nacos匹配，yaml配置，seata代理数据库，@GlobalTransactional，异常回滚</p><p>执行流程：一阶段加载：解析sql语句找到业务数据保存为before image，执行业务sql，保存after iamge，生成行锁，二阶段提交：顺利提交，seata删除快照和行锁，完成数据清理即可，二阶段回滚：回滚执行的业务sql，通过一阶段回滚日志进行反向补偿，用before image还原业务数据，脏写校验，对比当前和after image</p><h2 id="分布式全局唯一id："><a href="#分布式全局唯一id：" class="headerlink" title="分布式全局唯一id："></a>分布式全局唯一id：</h2><p>UUID，入库性能差、数据库自增主键，B+树索引分裂、reids集群增长步长，需要维护，雪花算法</p><p><img src="https://z3.ax1x.com/2021/07/27/WhcJM9.png" alt="WhcJM9.png"></p>]]></content>
     
     
-      
-      
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
-      
+    <summary type="html">SpringCloud Alibaba</summary>
     
     
     
+    <category term="分类" scheme="https://fireonice.github.io/categories/%E5%88%86%E7%B1%BB/"/>
+    
+    
+    <category term="SpringCloud Alibaba" scheme="https://fireonice.github.io/tags/SpringCloud-Alibaba/"/>
     
   </entry>
   
