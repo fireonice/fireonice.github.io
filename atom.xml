@@ -6,7 +6,7 @@
   <link href="https://fireonice.github.io/atom.xml" rel="self"/>
   
   <link href="https://fireonice.github.io/"/>
-  <updated>2022-01-24T06:43:21.042Z</updated>
+  <updated>2022-01-24T06:51:57.917Z</updated>
   <id>https://fireonice.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://fireonice.github.io/2022/01/24/test/"/>
     <id>https://fireonice.github.io/2022/01/24/test/</id>
     <published>2022-01-24T04:26:27.134Z</published>
-    <updated>2022-01-24T06:43:21.042Z</updated>
+    <updated>2022-01-24T06:51:57.917Z</updated>
     
-    <content type="html"><![CDATA[<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="string">port:8181</span></span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h1 id="AA"><a href="#AA" class="headerlink" title="AA"></a>AA</h1><h2 id="1-1"><a href="#1-1" class="headerlink" title="1.1"></a>1.1</h2><h2 id="1-2"><a href="#1-2" class="headerlink" title="1.2"></a>1.2</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="string">port:8181</span></span><br></pre></td></tr></table></figure><h1 id="BB"><a href="#BB" class="headerlink" title="BB"></a>BB</h1>]]></content>
     
     
     <summary type="html">描述</summary>
