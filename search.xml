@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>RabbitMQ</title>
+      <link href="/2022/01/25/RabbitMQ/"/>
+      <url>/2022/01/25/RabbitMQ/</url>
+      
+        <content type="html"><![CDATA[<h1 id="1、概述"><a href="#1、概述" class="headerlink" title="1、概述"></a>1、概述</h1><h2 id="什么是MQ"><a href="#什么是MQ" class="headerlink" title="什么是MQ"></a>什么是MQ</h2><p>消息队列</p><p>流量削峰</p><p>应用解耦：上游只需发送消息</p><p>异步处理：异步处理回调消息</p><h2 id="四大核心概念"><a href="#四大核心概念" class="headerlink" title="四大核心概念"></a>四大核心概念</h2><p>生产者、交换机、队列、消费者</p><h2 id="六大核心模式"><a href="#六大核心模式" class="headerlink" title="六大核心模式"></a>六大核心模式</h2><p>简单、工作队列、发布订阅、路由、主题、发布确认</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220125223147422.png" alt="image-20220125223147422"></p><h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><p><strong>Broker</strong></p><p><strong>Virtual host</strong></p><p><strong>Connection</strong></p><p><strong>Channel</strong></p><p><strong>Exchange</strong></p><p><strong>Queue</strong></p><p><strong>Binding</strong></p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220125223250580.png" alt="image-20220125223250580"></p><h1 id="2、核心"><a href="#2、核心" class="headerlink" title="2、核心"></a>2、核心</h1><h2 id="工作队列"><a href="#工作队列" class="headerlink" title="工作队列"></a>工作队列</h2><p><strong>轮询</strong>分发消息</p><p>消息应答：消费者是否处理消息</p><p>自动应答、手动应答（批量应答）</p><p>消息自动重新入队</p><p>rabbitmq持久化：队列持久化、消息持久化</p><p>不公平分发</p><p>预取值：通道中堆积消息个数</p><h2 id="发布确认"><a href="#发布确认" class="headerlink" title="发布确认"></a>发布确认</h2><p>单个确认发布</p><p>批量确认发布</p><p>异步确认发布：异步通知——交换机确认收到、未确认收到</p><p>并发链路式队列——发消息和监听线程之间传递消息——本质：map</p><p>1、发送消息时进记录队列</p><p>2、确认回调再删除</p><p>未删除的——未确认消息</p><p>跳表</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220125224155047.png" alt="image-20220125224155047"></p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220125224048175.png" alt="image-20220125224048175"></p><h2 id="Exchange"><a href="#Exchange" class="headerlink" title="Exchange"></a>Exchange</h2><p>直接(direct), 主题(topic) ,标题(headers) , 扇出(fanout)</p><p>无名 exchange</p><p>临时队列</p><p>bindings</p><h3 id="Fanout"><a href="#Fanout" class="headerlink" title="Fanout"></a>Fanout</h3><p>广播：路由key为空</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220125224517818.png" alt="image-20220125224517818"></p><h3 id="Direct"><a href="#Direct" class="headerlink" title="Direct"></a>Direct</h3><p>发送路由key对应队列——无论队列个数</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220125224644373.png" alt="image-20220125224644373"></p><h3 id="Topics"><a href="#Topics" class="headerlink" title="Topics"></a>Topics</h3><p>没有*和#：fanout、direct模式</p><p>*(星号)可以代替一个单词</p><p>#(井号)可以替代零个或多个单词</p><h1 id="3、高级"><a href="#3、高级" class="headerlink" title="3、高级"></a>3、高级</h1><h2 id="死信队列"><a href="#死信队列" class="headerlink" title="死信队列"></a>死信队列</h2><p>发送异常消息——进入死信队列</p><p>死信队列的来源：</p><p>消息 TTL 过期</p><p>队列达到最大长度(队列满了，无法再添加数据到 mq 中)</p><p>消息被拒绝(basic.reject 或 basic.nack)并且 requeue=false.</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220125224938734.png" alt="image-20220125224938734"></p><h2 id="延迟队列"><a href="#延迟队列" class="headerlink" title="延迟队列"></a>延迟队列</h2><h3 id="延时队列"><a href="#延时队列" class="headerlink" title="延时队列"></a>延时队列</h3><p>延迟队列——消息过期进入死信队列</p><p>存放需要在指定时间被处理的元素的队列</p><p>应用场景</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220125225016545.png" alt="image-20220125225016545"></p><p>缺陷：ttl不灵活</p><h3 id="延时队列优化"><a href="#延时队列优化" class="headerlink" title="延时队列优化"></a>延时队列优化</h3><p>QC队列不设置过期时间，由生产者设置ttl</p><p>缺陷：队列FIFO</p><h3 id="基于插件优化"><a href="#基于插件优化" class="headerlink" title="基于插件优化"></a>基于插件优化</h3><p>基于插件的交换机：在交换机处延迟</p><p>延迟交换机：类型、延迟类型（直接：路由key固定）</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220125225256329.png" alt="image-20220125225256329"></p><p>其他延时队列：</p><p>Java 的 DelayQueue，利用 Redis 的 zset，利用 Quartz，或者利用 kafka 的时间轮。RabbitMQ安全，完善。</p><h2 id="发布确认高级"><a href="#发布确认高级" class="headerlink" title="发布确认高级"></a>发布确认高级</h2><h3 id="交换机回调"><a href="#交换机回调" class="headerlink" title="交换机回调"></a>交换机回调</h3><p>交换机确认消息是否收到</p><p>写回调方法、注入</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220125225816018.png" alt="image-20220125225816018"></p><p>生产者只管给交换机消息，只接受交换机的接收结果</p><p>路由错误无法接收结果</p><h3 id="回退消息"><a href="#回退消息" class="headerlink" title="回退消息"></a>回退消息</h3><p>无法路由时，消息回退给交换机，通知生产者</p><h3 id="备份交换机"><a href="#备份交换机" class="headerlink" title="备份交换机"></a>备份交换机</h3><p>无法投递的消息给备份交换机</p><p>没有什么是加一层解决不了的</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220125230021103.png" alt="image-20220125230021103"></p><p>备份优先级更高</p><h2 id="幂等性"><a href="#幂等性" class="headerlink" title="幂等性"></a>幂等性</h2><p>幂等性：重复提交</p><p>消费者ack中断，造成重新消费</p><p>解决思路：生成全局唯一id，消费之前判断是否被消费过</p><p>1、唯一ID + 指纹码机制（数据库）</p><p>2、Redis原子性：利用 redis 执行 setnx 命令，天然具有幂等性。从而实现不重复消费</p><h2 id="优先级队列"><a href="#优先级队列" class="headerlink" title="优先级队列"></a>优先级队列</h2><p>设置优先级参数</p><h2 id="惰性队列"><a href="#惰性队列" class="headerlink" title="惰性队列"></a>惰性队列</h2><p>消息存到磁盘中，消费者从磁盘取</p><p>内存占比非常小，取消息慢</p><h1 id="4、集群"><a href="#4、集群" class="headerlink" title="4、集群"></a>4、集群</h1><h2 id="普通集群"><a href="#普通集群" class="headerlink" title="普通集群"></a>普通集群</h2><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220125221757500.png" alt="image-20220125221757500"></p><h2 id="镜像集群"><a href="#镜像集群" class="headerlink" title="镜像集群"></a>镜像集群</h2><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220125222245390.png" alt="image-20220125222245390"></p><h2 id="高负载均衡"><a href="#高负载均衡" class="headerlink" title="高负载均衡"></a>高负载均衡</h2><p><strong>nginx、gateway</strong>、Haproxy等集群，进行反向代理</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220125230327710.png" alt="image-20220125230327710"></p><p>以下暂用不到</p><h2 id="Shovel集群"><a href="#Shovel集群" class="headerlink" title="Shovel集群"></a>Shovel集群</h2><p>远程同步</p><h2 id="Federation-联邦集群"><a href="#Federation-联邦集群" class="headerlink" title="Federation 联邦集群"></a>Federation 联邦集群</h2><p>Federation Exchange、Federation Queue</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/acae23ba5952abdce66bb65e8b00a5a0.png" alt="img"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 分类 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> RabbitMQ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ActiveMQ</title>
       <link href="/2022/01/24/ActiveMQ/"/>
       <url>/2022/01/24/ActiveMQ/</url>
@@ -30,8 +55,8 @@
     
     <entry>
       <title>Spring Security</title>
-      <link href="/2022/01/24/nginx%20-%20%E5%89%AF%E6%9C%AC/"/>
-      <url>/2022/01/24/nginx%20-%20%E5%89%AF%E6%9C%AC/</url>
+      <link href="/2022/01/24/Spring%20Security/"/>
+      <url>/2022/01/24/Spring%20Security/</url>
       
         <content type="html"><![CDATA[<h2 id="1、基本原理"><a href="#1、基本原理" class="headerlink" title="1、基本原理"></a>1、基本原理</h2><p>认证</p><p>授权</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220124220153579.png" alt="image-20220124220153579"></p><h2 id="2、web权限"><a href="#2、web权限" class="headerlink" title="2、web权限"></a>2、web权限</h2><p>查询数据库认证</p><p>自定义登录页面</p><p>方法注解</p><p>注销</p><p>原理分析</p><p>CSRF</p><h2 id="3、微服务权限"><a href="#3、微服务权限" class="headerlink" title="3、微服务权限"></a>3、微服务权限</h2><p>流程</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220124220433500.png" alt="image-20220124220433500"></p><p>数据库分表</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220124220446710.png" alt="image-20220124220446710"></p><p>JWT：JWT 头、内容、签名哈希</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220124220917745.png" alt="image-20220124220917745"></p><h2 id="4、源码解析"><a href="#4、源码解析" class="headerlink" title="4、源码解析"></a>4、源码解析</h2><p><strong>Spring Security</strong> 采取<strong>过滤链</strong>实现认证与授权</p><p>认证流程</p><p>权限访问流程</p><p>请求间共享认证信息</p>]]></content>
       
