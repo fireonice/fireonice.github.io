@@ -6,7 +6,7 @@
   <link href="https://fireonice.github.io/atom.xml" rel="self"/>
   
   <link href="https://fireonice.github.io/"/>
-  <updated>2022-01-28T12:07:12.958Z</updated>
+  <updated>2022-01-28T12:10:30.370Z</updated>
   <id>https://fireonice.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://fireonice.github.io/2022/01/28/Mycat/"/>
     <id>https://fireonice.github.io/2022/01/28/Mycat/</id>
     <published>2022-01-28T11:47:51.198Z</published>
-    <updated>2022-01-28T12:07:12.958Z</updated>
+    <updated>2022-01-28T12:10:30.370Z</updated>
     
     <content type="html"><![CDATA[<h1 id="1、概述"><a href="#1、概述" class="headerlink" title="1、概述"></a>1、概述</h1><h2 id="数据库中间件"><a href="#数据库中间件" class="headerlink" title="数据库中间件"></a>数据库中间件</h2><p>① Java与数据库紧耦合。 </p><p>② 高访问量高并发对数据库的压力。 </p><p>③ 读写请求数据不一致</p><p>对比：<img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220128195056298.png" alt="image-20220128195056298"></p><h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>读写分离：配合主从复制、主备模式</p><p>数据分片：分库分表</p><p>多数据源整合</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220128195358045.png" alt="image-20220128195358045"></p><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>拦截</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220128195439600.png" alt="image-20220128195439600"></p><p>三个重要配置文件</p><p>1、逻辑库、表、分片节点</p><p>2、分片规则</p><p>3、用户、系统配置</p><h1 id="2、读写分离"><a href="#2、读写分离" class="headerlink" title="2、读写分离"></a>2、读写分离</h1><p>Myqsl：从接入点开始复制</p><h2 id="一主一从"><a href="#一主一从" class="headerlink" title="一主一从"></a>一主一从</h2><p>日志格式</p><p>balance属性：读写分离</p><p>复制原理：</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220128195544208.png" alt="image-20220128195544208"></p><h2 id="双主双从"><a href="#双主双从" class="headerlink" title="双主双从"></a>双主双从</h2><p>主备切换</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220128195329105.png" alt="image-20220128195329105"></p><h1 id="3、分库分表"><a href="#3、分库分表" class="headerlink" title="3、分库分表"></a>3、分库分表</h1><h2 id="分库"><a href="#分库" class="headerlink" title="分库"></a>分库</h2><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220128195834488.png" alt="image-20220128195834488"></p><h2 id="分表"><a href="#分表" class="headerlink" title="分表"></a>分表</h2><p>多表联查</p><p>全局表：全局一致性（广播）</p><p>常用分片规则：</p><p>取模、分片枚举、范围约定、日期</p><h2 id="全局序列"><a href="#全局序列" class="headerlink" title="全局序列"></a>全局序列</h2><p>1、本地文件</p><p>2、时间戳</p><p>3、数据库方式</p><p>4、reids、雪花算法等</p><h1 id="4、基于HA机制的Mycat高可用"><a href="#4、基于HA机制的Mycat高可用" class="headerlink" title="4、基于HA机制的Mycat高可用"></a>4、基于HA机制的Mycat高可用</h1><p>Mycat集群保证数据库高可用</p><p>haproxy保证mycat高可用（负载均衡）</p><p>Keepalived保证haproxy高可用（创建虚拟ip）</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220128200457657.png" alt="image-20220128200457657"></p><p>安全权限</p><p>user、privileges、sql拦截</p><h1 id="6、监控"><a href="#6、监控" class="headerlink" title="6、监控"></a>6、监控</h1><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220128200635053.png" alt="image-20220128200635053"></p>]]></content>
     
