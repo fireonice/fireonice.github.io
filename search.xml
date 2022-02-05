@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>开发总结——前后端分离+微服务</title>
+      <link href="/2022/02/05/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/"/>
+      <url>/2022/02/05/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/</url>
+      
+        <content type="html"><![CDATA[<h1 id="1、MP"><a href="#1、MP" class="headerlink" title="1、MP"></a>1、MP</h1><p>基本流程</p><p>主键自动生成</p><p>自动填充</p><p>乐观锁实现</p><p>select、分页</p><p>delete：逻辑删除、物理删除</p><p>mp性能分析插件</p><p>条件查询Querywrapper</p><h1 id="2、后端1"><a href="#2、后端1" class="headerlink" title="2、后端1"></a>2、后端1</h1><p>json时区</p><p>swagger测试</p><p>统一返回格式</p><p>@requestbody</p><p>统一、指定、自定义异常处理</p><p>日志输出、日志级别</p><h1 id="3、前端1"><a href="#3、前端1" class="headerlink" title="3、前端1"></a>3、前端1</h1><p>es6语法：</p><p>数组解构、对象赋值、模拟字符串、对象方法、箭头函数</p><p>vue指令、组件</p><p>vue生命周期：</p><p>Create、Mounted</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220205230634449.png" alt="image-20220205230634449"></p><p>断点</p><p>Vue路由</p><p>Axios</p><p>Element-ui</p><p>Node.js</p><p>npm</p><p>Babel</p><p>前端模块化</p><p>Webpack</p><p>vue-admin-template、目录结构</p><p>跨域</p><p>路由切换</p><p><strong>开发流程</strong></p><p>服务端渲染技术</p><p>NUST框架</p><h1 id="4、oss、视频点播、短信、微信支付、微信注册"><a href="#4、oss、视频点播、短信、微信支付、微信注册" class="headerlink" title="4、oss、视频点播、短信、微信支付、微信注册"></a>4、oss、视频点播、短信、微信支付、微信注册</h1><p>阿里云对象存储</p><p>阿里云视频点播：上传、播放、删除</p><p>阿里云短信服务</p><p>微信支付</p><p>微信注册</p><h1 id="5、后端2"><a href="#5、后端2" class="headerlink" title="5、后端2"></a>5、后端2</h1><p>nginx</p><p>EasyExcel读写</p><p>Vue tree</p><p>vo</p><p>bean转换</p><p>树形结构：遍历、循环</p><p>路由、隐藏路由、动态路由</p><p>富文本编辑器</p><p>多表联查——SQL</p><p>openfeign、nacos</p><p>远程调用流程：</p><p>1、接口化请求调用</p><p>2、Feign</p><p>3、Hystrix</p><p>4、Ribbon</p><p>5、Httpclient</p><h1 id="6、后端3"><a href="#6、后端3" class="headerlink" title="6、后端3"></a>6、后端3</h1><p>redis缓存：</p><p>Cacheable、Cacheput、Cacheevict</p><p>sso单点登录</p><p>jwt：json web token</p><p>1、jwt头信息</p><p>2、有效载荷</p><p>3、签名哈希</p><p>sso实现：</p><p>1、session复制</p><p>2、Cookie带着唯一key在中redis 查询 </p><p>3、Token：用户信息加密成的字符串（自包含令牌）</p><p>（1）cookie 或者 地址栏</p><p>（2）访问时携带字符串</p><p>Reids过期时间、token过期时间 均可设置过期</p><p>密码加密：</p><p>1、MD5工具类</p><p>2、密码加密和数据库比较</p><p>token解析</p><h1 id="7、前端2"><a href="#7、前端2" class="headerlink" title="7、前端2"></a>7、前端2</h1><p>二维码</p><p>定时器</p><p>token实现：</p><p>(1) 登录返回token</p><p>(2) Token放到cookie中</p><p>(3) 前端拦截器（请求拦截）：判断cookie是否有token，把token放到请求头中</p><p>(4) 根据请求头的token获取用户信息，用户信息放到cookie中</p><p>(5) 显示用户信息</p><p>验证——获得token（放到cookie）——拦截：获取token放到header——调用api获取用户信息（放到cookie）</p><p>cookie：json字符串转为json对象</p><p>OAuth2</p><p>微信登录：</p><p>1、使用httpclient发送get请求（工具类 + 依赖）</p><p>2、从json字符串获取值（转为map）</p><p>3、再请求一个地址，获取扫码人信息</p><p>4、自动注册（未注册）</p><p>token路径传递</p><p>1、通过路径获取token</p><p>以下同前面</p><p>2、Token——cookie、拦截器：token——header</p><p>存在cookie中是因为有拦截器会将cookie中的token存到header中，后端也是从hader中取token的，cookie相当于转存的介质</p><p>3、Token + header = member——cookie</p><p>播放器组件</p><p>评论组件</p><p>微信支付：</p><p>(1) 生成订单</p><p>① 根据课程id获取课程信息——远程调用</p><p>② 根据用户id（jwt从header获取id）获取用户信息——远程调用</p><p>(2) 根据id查询订单信息</p><p>(3) 生成微信支付二维码</p><p>① 、获取订单参数</p><p>②、发送httpclient请求（参数xml）</p><p>③、获取返回结果</p><p>(4) 查询支付状态</p><p>①Service——发送httpclient请求——返回包含状态</p><p>②添加支付记录，更改订单状态</p><p>③定时器</p><p>根据Url下载二维码组件</p><p>Echarts</p><p>定时任务</p><h1 id="8、后端4"><a href="#8、后端4" class="headerlink" title="8、后端4"></a>8、后端4</h1><p>canal数据同步</p><p>Gateway：路由、断言、过滤器</p><p>权限管理</p><p>权限关系表</p><p>递归分级</p><p>SpringSecurity</p><p>nacos配置中心</p><h1 id="9、Jenkins"><a href="#9、Jenkins" class="headerlink" title="9、Jenkins"></a>9、Jenkins</h1><p>Jenkins、github action</p><h1 id="10、产品开发流程"><a href="#10、产品开发流程" class="headerlink" title="10、产品开发流程"></a>10、产品开发流程</h1><p>1、需求调研（产品经理）</p><p>2、需求评审（产品/设计/前端/后端/测试/运营）</p><p>3、立项（项目经理、品管）</p><p>4、UI设计</p><p>5、开发</p><p>· 架构、数据库设计、API文档、MOCK数据、开发、单元测试</p><p>· 前端</p><p>· 后端</p><p>6、前端后端联调</p><p>7、项目提测：黑盒白盒、压力测试（qps）  loadrunner</p><p>8、bug修改</p><p>9、回归测试</p><p>10、运维和部署上线</p><p>11、灰度发布</p><p>12、全量发布</p><p>13、维护和运营</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 产品 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 产品开发 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Mycat</title>
       <link href="/2022/01/28/Mycat/"/>
       <url>/2022/01/28/Mycat/</url>
@@ -13,7 +38,7 @@
       
       <categories>
           
-          <category> 分类 </category>
+          <category> 微服务核心 </category>
           
       </categories>
       
@@ -38,7 +63,7 @@
       
       <categories>
           
-          <category> 分类 </category>
+          <category> 微服务核心 </category>
           
       </categories>
       
@@ -63,7 +88,7 @@
       
       <categories>
           
-          <category> 分类 </category>
+          <category> 微服务核心 </category>
           
       </categories>
       
@@ -88,7 +113,7 @@
       
       <categories>
           
-          <category> 分类 </category>
+          <category> 微服务核心 </category>
           
       </categories>
       
@@ -113,7 +138,7 @@
       
       <categories>
           
-          <category> 分类 </category>
+          <category> 微服务核心 </category>
           
       </categories>
       
@@ -138,7 +163,7 @@
       
       <categories>
           
-          <category> 分类 </category>
+          <category> 微服务核心 </category>
           
       </categories>
       
@@ -163,7 +188,7 @@
       
       <categories>
           
-          <category> 分类 </category>
+          <category> 微服务核心 </category>
           
       </categories>
       
@@ -188,7 +213,7 @@
       
       <categories>
           
-          <category> 分类 </category>
+          <category> 微服务核心 </category>
           
       </categories>
       
@@ -213,7 +238,7 @@
       
       <categories>
           
-          <category> 分类 </category>
+          <category> 微服务核心 </category>
           
       </categories>
       
@@ -238,7 +263,7 @@
       
       <categories>
           
-          <category> 分类 </category>
+          <category> 微服务核心 </category>
           
       </categories>
       
@@ -263,7 +288,7 @@
       
       <categories>
           
-          <category> 分类 </category>
+          <category> 微服务核心 </category>
           
       </categories>
       
@@ -288,7 +313,7 @@
       
       <categories>
           
-          <category> 分类 </category>
+          <category> 微服务核心 </category>
           
       </categories>
       
