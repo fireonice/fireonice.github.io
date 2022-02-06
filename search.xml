@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>开发总结——MongoDB、业务流程</title>
+      <link href="/2022/02/06/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%932/"/>
+      <url>/2022/02/06/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%932/</url>
+      
+        <content type="html"><![CDATA[<h1 id="1、架构"><a href="#1、架构" class="headerlink" title="1、架构"></a>1、架构</h1><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220206222116806.png" alt="image-20220206222116806"></p><h1 id="2、MongoDB"><a href="#2、MongoDB" class="headerlink" title="2、MongoDB"></a>2、MongoDB</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>基于分布式文件存储的开源数据库系统</p><p>字段值可以包含其他文档，数组及文档数组。</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220206222409680.png" alt="image-20220206222409680"></p><h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>MongoDB 是一个面向文档存储的数据库</p><p>MongoDB记录中设置任何属性的索引 (如：FirstName=”Sameer”,Address=”8 Gandhi Road”)来实现更快的排序</p><p>可以通过本地或者网络创建数据镜像，实现高扩展性</p><p>如果负载的增加（需要更多的存储空间和更强的处理能力） ，它可以分布在计算机网络中的其他节点上，分片</p><p>Mongodb中的Map/reduce主要是用来对数据进行批量处理和聚合操作</p><h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>1、网站数据、大数据、缓存</p><p>2、高伸缩性</p><p>3、对象、json数据</p><h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><p>MongoTemplate</p><p>MongoRepository（SpringData方法定义规范）</p><h1 id="3、预约挂号业务"><a href="#3、预约挂号业务" class="headerlink" title="3、预约挂号业务"></a>3、预约挂号业务</h1><p>1、排班和挂号详情信息——【医院+科室——规则——日期——排班、挂号信息】</p><p>2、确认挂号信息——【就诊人、排班信息】</p><p>3、生成预约挂号订单【就诊人 + 排班 —— 生成订单】</p><p>4、挂号订单支付（微信）【微信支付、订单状态】</p><p>5、取消预约订单【退款、取消订单】</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220206221759069.png" alt="image-20220206221759069"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 产品 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 产品开发 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>开发总结——前后端分离+微服务</title>
       <link href="/2022/02/05/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/"/>
       <url>/2022/02/05/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/</url>
