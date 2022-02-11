@@ -196,13 +196,6 @@
   </url>
   
   <url>
-    <loc>https://fireonice.github.io/tags/RocketMQ/</loc>
-    <lastmod>2022-02-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://fireonice.github.io/tags/RabbitMQ/</loc>
     <lastmod>2022-02-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -210,14 +203,14 @@
   </url>
   
   <url>
-    <loc>https://fireonice.github.io/tags/Spring-Security/</loc>
+    <loc>https://fireonice.github.io/tags/RocketMQ/</loc>
     <lastmod>2022-02-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://fireonice.github.io/tags/SpringCloud-Alibaba/</loc>
+    <loc>https://fireonice.github.io/tags/Spring-Security/</loc>
     <lastmod>2022-02-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -238,6 +231,13 @@
   </url>
   
   <url>
+    <loc>https://fireonice.github.io/tags/SpringCloud-Alibaba/</loc>
+    <lastmod>2022-02-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://fireonice.github.io/tags/elasticsearch/</loc>
     <lastmod>2022-02-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -252,14 +252,14 @@
   </url>
   
   <url>
-    <loc>https://fireonice.github.io/tags/zookeeper/</loc>
+    <loc>https://fireonice.github.io/tags/redis/</loc>
     <lastmod>2022-02-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://fireonice.github.io/tags/redis/</loc>
+    <loc>https://fireonice.github.io/tags/zookeeper/</loc>
     <lastmod>2022-02-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
