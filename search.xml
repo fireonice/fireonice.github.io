@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>谷粒商城——分布式基础-全栈开发篇</title>
+      <link href="/2022/02/12/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E-%E5%88%86%E5%B8%83%E5%BC%8F%E5%9F%BA%E7%A1%80/"/>
+      <url>/2022/02/12/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E-%E5%88%86%E5%B8%83%E5%BC%8F%E5%9F%BA%E7%A1%80/</url>
+      
+        <content type="html"><![CDATA[<h1 id="1、写在前面"><a href="#1、写在前面" class="headerlink" title="1、写在前面"></a>1、写在前面</h1><p>仿京东商城大型分布式架构电商平台：微服务架构+分布式+全栈+集群+部署+自动化运维+可视化CICD</p><p>Gitee仓库：<a href="https://gitee.com/namdev/gulimall">https://gitee.com/namdev/gulimall</a></p><p>后台接口文档：<a href="https://easydoc.net/s/78237135/ZUqEdvA4/hKJTcbfd">https://easydoc.net/s/78237135/ZUqEdvA4/hKJTcbfd</a></p><h1 id="2、架构"><a href="#2、架构" class="headerlink" title="2、架构"></a>2、架构</h1><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220212201439633.png" alt="image-20220212201439633"></p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220212201228064.png" alt="image-20220212201228064"></p><h1 id="3、基础环境"><a href="#3、基础环境" class="headerlink" title="3、基础环境"></a>3、基础环境</h1><p>linux、docker</p><p>数据库</p><p>人人后台</p><p>分布式组件</p><h1 id="4、商品、订单、仓库服务后台"><a href="#4、商品、订单、仓库服务后台" class="headerlink" title="4、商品、订单、仓库服务后台"></a>4、商品、订单、仓库服务后台</h1><h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220212211040144.png" alt="image-20220212211040144"></p><h2 id="pms库"><a href="#pms库" class="headerlink" title="pms库"></a>pms库</h2><p>Attr：属性表</p><p>Attr_group：属性分组表</p><p>Attr_attrgroup_relation：属性分组关联表</p><p>Product_attr_value：商品id属性值表</p><p>Spu_info：商品spu</p><p>Sku_info：商品sku</p><p>Sku_images：商品sku图片</p><p>Sku_sale_attr_values：商品sku销售属性值</p><p>三级分类——属性分组——属性</p><p>属性——商品（spu）属性集——商品型号（sku）属性</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220212211136464.png" alt="image-20220212211136464"></p><h2 id="保存商品"><a href="#保存商品" class="headerlink" title="保存商品"></a>保存商品</h2><p>Spu_info：基本信息</p><p>Spu_info_desc：id + 描述图片</p><p>Spu_images：id + 图片集</p><p>Product_attr_value：spu规格参数 spuid + 属性值</p><p>Spu_bounds：商品积分 （sms库）</p><p>Sku_info：sku基本信息 + spuid</p><p>Sku_images：skuid + sku图片信息</p><p>Sku_sale_attr_value：sku销售属性 skuid + 属性值</p><p>Sku优惠满减信息（sms库）：skuid</p><p>Sku_ladder：打折表</p><p>Sku_full_reduction：满减表</p><p>Member_price：会员价格表</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220212211157512.png" alt="image-20220212211157512"></p><h2 id="业务接口"><a href="#业务接口" class="headerlink" title="业务接口"></a>业务接口</h2><p>单表、多表、多库、远程调用、属性拷贝等暂时省略</p><h1 id="5、jsr303校验"><a href="#5、jsr303校验" class="headerlink" title="5、jsr303校验"></a>5、jsr303校验</h1><p>开启校验（错误返回） + bean校验注解</p><p>统一异常处理</p><p>枚举类</p><p>jsr303分组校验</p><p>jsr303自定义校验注解</p><h1 id="5、object"><a href="#5、object" class="headerlink" title="5、object"></a>5、object</h1><p>1.PO(persistant object) 持久对象 </p><p>PO 就是对应数据库中某个表中的一条记录，多个记录可以用 PO 的集合。 PO 中应该不包含任何对数据库的操作。 </p><p>2.DO（Domain Object）领域对象就是从现实世界中抽象出来的有形或无形的业务实体。 </p><p>3.TO(Transfer Object) 数据传输对象</p><p>不同的应用程序之间传输的对象 </p><p>4.DTO（Data Transfer Object）数据传输对象</p><p>这个概念来源于 J2EE 的设计模式，原来的目的是为了 EJB 的分布式应用提供粗粒度的 数据实体，以减少分布式调用的次数，从而提高分布式调用的性能和降低网络负载，但在这里，泛指用于展示层与服务层之间的数据传输对象。 </p><p>5.VO(value object) 值对象 </p><p>通常用于业务层之间的数据传递，和 PO 一样也是仅仅包含数据而已。但应是抽象出 的业务对象 , 可以和表对应 , 也可以不 , 这根据业务的需要 。用 new 关键字创建，由 GC 回收的。 View object：视图对象； 接受页面传递来的数据，封装对象将业务处理完成的对象，封装成页面要用的数据 </p><p><strong>6.BO(business object)</strong> <strong>业务对象</strong> </p><p>从业务模型的角度看 , 见 UML 元件领域模型中的领域对象。封装业务逻辑的 </p><p>java 对 象 , 通过调用 DAO 方法 , 结合 PO,VO 进行业务操作。business object: 业务对象主要作 用是把业务逻辑封装为一个对象。这个对象可以包括一个或多个其它的对象。 比如一个简 历，有教育经历、工作经历、社会关系等等。 我们可以把教育经历对应一个 PO ，工作经 历对应一个 PO ，社会关系对应一个 PO 。 建立一个对应简历的 BO 对象处理简历，每个 BO 包含这些 PO 。 这样处理业务逻辑时，我们就可以针对 BO 去处理。</p><p>7.POJO(plain ordinary java object) 简单无规则 java 对象 </p><p>传统意义的 java 对象。就是说在一些 Object/Relation Mapping 工具中，能够做到维护 数据库表记录的 persisent object 完全是一个符合 Java Bean 规范的纯 Java 对象，没有增 加别的属性和方法。我的理解就是最基本的 java Bean ，只有属性字段及 setter 和 getter 方法！。POJO 是 DO/DTO/BO/VO 的统称。 </p><p>8.DAO(data access object) 数据访问对象 </p><p>是一个 sun 的一个标准 j2ee 设计模式， 这个模式中有个接口就是 DAO ，它负持久 层的操作。为业务层提供接口。此对象用于访问数据库。通常和 PO 结合使用， DAO 中包含了各种数据库的操作方法。通过它的方法 , 结合 PO 对数据库进行相关的操作。夹在业务逻辑与数据库资源中间。配合 VO, 提供数据库的 CRUD 操作.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 产品 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 产品开发 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>开发总结——金融业务平台</title>
       <link href="/2022/02/07/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%933/"/>
       <url>/2022/02/07/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%933/</url>
