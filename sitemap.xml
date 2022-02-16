@@ -209,6 +209,13 @@
 
   
   <url>
+    <loc>https://fireonice.github.io/tags/RocketMQ/</loc>
+    <lastmod>2022-02-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://fireonice.github.io/tags/ActiveMQ/</loc>
     <lastmod>2022-02-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -223,21 +230,7 @@
   </url>
   
   <url>
-    <loc>https://fireonice.github.io/tags/RocketMQ/</loc>
-    <lastmod>2022-02-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://fireonice.github.io/tags/RabbitMQ/</loc>
-    <lastmod>2022-02-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://fireonice.github.io/tags/SpringCloud-Alibaba/</loc>
     <lastmod>2022-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -251,13 +244,6 @@
   </url>
   
   <url>
-    <loc>https://fireonice.github.io/tags/dubbo/</loc>
-    <lastmod>2022-02-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://fireonice.github.io/tags/docker/</loc>
     <lastmod>2022-02-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -265,7 +251,14 @@
   </url>
   
   <url>
-    <loc>https://fireonice.github.io/tags/nginx/</loc>
+    <loc>https://fireonice.github.io/tags/SpringCloud-Alibaba/</loc>
+    <lastmod>2022-02-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://fireonice.github.io/tags/dubbo/</loc>
     <lastmod>2022-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -287,6 +280,13 @@
   
   <url>
     <loc>https://fireonice.github.io/tags/zookeeper/</loc>
+    <lastmod>2022-02-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://fireonice.github.io/tags/nginx/</loc>
     <lastmod>2022-02-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
