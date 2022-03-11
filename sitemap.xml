@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://fireonice.github.io/2022/03/11/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E-k8s-%E8%87%AA%E5%8A%A8%E5%8C%96cicd&%E6%9C%80%E7%BB%88%E9%83%A8%E7%BD%B2/</loc>
+    
+    <lastmod>2022-03-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://fireonice.github.io/2022/03/08/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E-%E4%BA%91%E5%8E%9F%E7%94%9FPaaS%E5%B9%B3%E5%8F%B0Kubesphere/</loc>
     
     <lastmod>2022-03-11</lastmod>
@@ -272,20 +281,6 @@
 
   
   <url>
-    <loc>https://fireonice.github.io/tags/ActiveMQ/</loc>
-    <lastmod>2022-03-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://fireonice.github.io/tags/RabbitMQ/</loc>
-    <lastmod>2022-03-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://fireonice.github.io/tags/Mycat/</loc>
     <lastmod>2022-03-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -293,7 +288,7 @@
   </url>
   
   <url>
-    <loc>https://fireonice.github.io/tags/docker/</loc>
+    <loc>https://fireonice.github.io/tags/ActiveMQ/</loc>
     <lastmod>2022-03-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -307,13 +302,6 @@
   </url>
   
   <url>
-    <loc>https://fireonice.github.io/tags/RocketMQ/</loc>
-    <lastmod>2022-03-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://fireonice.github.io/tags/SpringCloud-Alibaba/</loc>
     <lastmod>2022-03-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -321,7 +309,35 @@
   </url>
   
   <url>
+    <loc>https://fireonice.github.io/tags/RocketMQ/</loc>
+    <lastmod>2022-03-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://fireonice.github.io/tags/docker/</loc>
+    <lastmod>2022-03-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://fireonice.github.io/tags/dubbo/</loc>
+    <lastmod>2022-03-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://fireonice.github.io/tags/RabbitMQ/</loc>
+    <lastmod>2022-03-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://fireonice.github.io/tags/nginx/</loc>
     <lastmod>2022-03-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -350,13 +366,6 @@
   
   <url>
     <loc>https://fireonice.github.io/tags/%E4%BA%A7%E5%93%81%E5%BC%80%E5%8F%91/</loc>
-    <lastmod>2022-03-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://fireonice.github.io/tags/nginx/</loc>
     <lastmod>2022-03-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
