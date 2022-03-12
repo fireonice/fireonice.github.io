@@ -1,0 +1,1176 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>云原生实战 | gca的学习录</title><meta name="keywords" content="产品开发"><meta name="author" content="gca"><meta name="copyright" content="gca"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="产品开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="云原生实战">
+<meta property="og:url" content="https://fireonice.github.io/2022/03/12/%E4%BA%91%E5%8E%9F%E7%94%9F%E5%AE%9E%E6%88%98/index.html">
+<meta property="og:site_name" content="gca的学习录">
+<meta property="og:description" content="产品开发">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312170342258.png">
+<meta property="article:published_time" content="2022-03-12T08:08:12.262Z">
+<meta property="article:modified_time" content="2022-03-12T09:04:18.049Z">
+<meta property="article:author" content="gca">
+<meta property="article:tag" content="产品开发">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312170342258.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://fireonice.github.io/2022/03/12/%E4%BA%91%E5%8E%9F%E7%94%9F%E5%AE%9E%E6%88%98/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '云原生实战',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-03-12 17:04:18'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="./css/iconfont.css"><link rel="stylesheet" href="./css/card_botui.css"><link rel="stylesheet" href="./css/index.css"><link rel="stylesheet" href="./css/Lete.css"><link rel="stylesheet" href="./css/var.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"><meta name="generator" content="Hexo 6.0.0"><link rel="alternate" href="/atom.xml" title="gca的学习录" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/./img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220209232417.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312170342258.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">gca的学习录</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">云原生实战</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-12T08:08:12.262Z" title="发表于 2022-03-12 16:08:12">2022-03-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-12T09:04:18.049Z" title="更新于 2022-03-12 17:04:18">2022-03-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%BA%A7%E5%93%81/">产品</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312161918939.png" alt="image-20220312161918939"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312161936438.png" alt="image-20220312161936438"></p>
+<ul>
+<li><p>容器化相比虚拟化</p>
+<ul>
+<li><p>同一标准</p>
+<ul>
+<li><p>应用无论什么语言同一构建成镜像</p>
+</li>
+<li><p>镜像分享仓库</p>
+</li>
+<li><p>容器化时代</p>
+<ul>
+<li>虚拟化技术</li>
+<li>容器化技术</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>资源隔离</p>
+<ul>
+<li>资源隔离</li>
+<li>访问设备隔离</li>
+<li>网络隔离</li>
+<li>用户隔离</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>docker架构</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/1624937894925-f437bd98-94e2-4334-9657-afa69bb52179.svg" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/1625373590853-2aaaa76e-d5b5-446b-850a-f6cfa26ac70a.png" alt="image.png"></p>
+</li>
+<li><p>操作</p>
+</li>
+</ul>
+<ul>
+<li><p>镜像操作</p>
+<ul>
+<li>docker hub仓库</li>
+</ul>
+</li>
+<li><p>容器操作</p>
+<ul>
+<li><p>外部操作</p>
+</li>
+<li><p>内部操作</p>
+<ul>
+<li>看镜像仓库官网</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>打包镜像变化</p>
+<ul>
+<li>docker commit</li>
+</ul>
+</li>
+<li><p>镜像保存</p>
+<ul>
+<li>docker save</li>
+<li>保存为压缩包文件</li>
+</ul>
+</li>
+<li><p>镜像加载</p>
+<ul>
+<li>docker load</li>
+<li>读取压缩包为镜像</li>
+</ul>
+</li>
+<li><p>镜像推送</p>
+<ul>
+<li>login：登录仓库</li>
+<li>tag：改名，带上自己的仓库名</li>
+<li>push：推送镜像</li>
+</ul>
+</li>
+<li><p>挂载</p>
+<ul>
+<li>保证外部有配置文件</li>
+<li>提前cp出来文件</li>
+</ul>
+</li>
+<li><p>其他命令</p>
+<ul>
+<li><p>docker logs 容器</p>
+<ul>
+<li>容器日志</li>
+</ul>
+</li>
+<li><p>docker cp</p>
+<ul>
+<li>容器复制到本地</li>
+<li>本地复制到容器</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>构建应用</p>
+</li>
+</ul>
+<ul>
+<li>以前</li>
+</ul>
+<pre><code>+ springboot打包
++ jar包上传服务器（环境）
++ 运行jar包
+</code></pre>
+<ul>
+<li>现在</li>
+</ul>
+<pre><code>+ 打包镜像，启动即用
+
+
+  + 编写docker file（如何打包）
+
+
+    + from：基础镜像
+
+      + 运行环境
+    + label：作者
+    + copy：把jar包复制到容器中位置
+    + entrypoint：启动命令
+
+      + java -jar xx
+
+    ![image-20220312162555498](https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312162555498.png)    
+
+  + 上传到linux运行打包
+
+
+    + docker file + jar包
+    + docker build
+
+      + tag：镜像名
+      + 当前目录工作
+
++ 启动容器应用
+
++ docker logs xx 查看日志
+</code></pre>
+<ul>
+<li>应用分享与启动</li>
+</ul>
+<ul>
+<li>tag</li>
+<li>push</li>
+<li>pull</li>
+</ul>
+<h1 id="k8s"><a href="#k8s" class="headerlink" title="k8s"></a>k8s</h1><ul>
+<li><p>组织架构</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/1625452728905-e72041a2-cf1b-4b24-a327-7f0c3974a931.png" alt="image.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312163709410.png" alt="image-20220312163709410"></p>
+</li>
+<li><p>k8s集群部署</p>
+<ul>
+<li>三个服务器</li>
+<li>安装docker容器环境</li>
+<li>k8s<ul>
+<li>kubelet、kubeadm、kubectl</li>
+</ul>
+</li>
+<li>kubeadm启动集群<ul>
+<li>master</li>
+<li>worker</li>
+<li>dashboard页面</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>核心实战</p>
+<ul>
+<li><p>namespace</p>
+<ul>
+<li>隔离资源</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312163739852.png" alt="image-20220312163739852"></p>
+</li>
+<li><p>pod</p>
+<ul>
+<li><p>一组容器</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312163750025.png" alt="image-20220312163750025"></p>
+</li>
+<li><p>创建pod</p>
+<ul>
+<li>命令行</li>
+<li>配置文件<ul>
+<li>apply -f</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>pod网络ip</p>
+<ul>
+<li>集群内公共访问</li>
+</ul>
+</li>
+<li><p>多容器pod</p>
+<ul>
+<li>共享pod网络</li>
+<li>端口不同即可部署多个相同应用</li>
+</ul>
+</li>
+<li><p>deployment部署</p>
+<ul>
+<li><p>控制pod</p>
+<ul>
+<li>自愈</li>
+<li>多副本</li>
+</ul>
+</li>
+<li><p>扩缩容</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312163803222.png" alt="image-20220312163803222"></p>
+</li>
+<li><p>自愈&amp;故障转移</p>
+</li>
+<li><p>阈值设置</p>
+</li>
+<li><p>滚动更新</p>
+<ul>
+<li>set新镜像自动滚动更新</li>
+<li>不停机更新</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312163809935.png" alt="image-20220312163809935"></p>
+</li>
+<li><p>版本回退</p>
+<ul>
+<li>rollout<ul>
+<li>history<ul>
+<li>查看历史部署</li>
+</ul>
+</li>
+<li>undo<ul>
+<li>回退</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>工作负载：控制pod</p>
+<ul>
+<li>有状态、无状态</li>
+<li>守护进程</li>
+<li>任务等</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312163840752.png" alt="image-20220312163840752"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312163820457.png" alt="image-20220312163820457"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>服务网格</p>
+<ul>
+<li><p>service</p>
+<ul>
+<li>暴露：将一组pod公开为网络服务</li>
+<li>自带负载均衡</li>
+<li>集群内ip、域名访问</li>
+<li>服务暴露<ul>
+<li>clusterIP<ul>
+<li>只能集群内访问</li>
+</ul>
+</li>
+<li>NodePort<ul>
+<li>集群外也可以访问（每个节点）</li>
+<li>随机分配端口（3万以上）</li>
+<li>nodeport——targetport——containerport</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ingress</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312163902230.png" alt="image-20220312163902230"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312163909266.png" alt="image-20220312163909266"></p>
+<ul>
+<li><p>集群统一网关入口</p>
+</li>
+<li><p>ingress网络模型</p>
+<ul>
+<li>底层nginx</li>
+<li>ingress接收请求转发到不同service<ul>
+<li>每个模块服务抽取为service<ul>
+<li>service层网络</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>路径重写</p>
+</li>
+<li><p>限流</p>
+</li>
+</ul>
+</li>
+<li><p>网络模型总结</p>
+<ul>
+<li>pod层，组合容器</li>
+<li>service层，负载均衡pod</li>
+<li>ingress层，路由service</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312163919837.png" alt="image-20220312163919837"></p>
+</li>
+</ul>
+</li>
+<li><p>存储抽象</p>
+<ul>
+<li><p>数据挂载层同一管理为存储层</p>
+<ul>
+<li><p>多种存储框架</p>
+<ul>
+<li><p>NFS</p>
+<ul>
+<li><p>client节点同步server节点数据</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312163928292.png" alt="image-20220312163928292"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>搭建NFS环境</p>
+</li>
+<li><p>deploy数据卷挂载</p>
+<ul>
+<li><p>原生方式</p>
+<ul>
+<li>创建文件夹</li>
+<li>配置deploy文件</li>
+</ul>
+</li>
+<li><p>PV与PVC</p>
+<ul>
+<li><p>PV持久卷：指定保存位置</p>
+</li>
+<li><p>PVC持久卷规格声明：容量等</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312163942434.png" alt="image-20220312163942434"></p>
+</li>
+<li><p>pvc配置文件</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>configmap抽取配置</p>
+<ul>
+<li><p>configmap便于镜像和配置文件的解耦</p>
+</li>
+<li><p>编写配置文件，创建为配置集</p>
+<ul>
+<li>保存在etcd</li>
+</ul>
+</li>
+<li><p>启动pod，配置文件挂载configmap</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312163949059.png" alt="image-20220312163949059"></p>
+</li>
+</ul>
+</li>
+<li><p>secret秘钥令牌</p>
+<ul>
+<li><p>创建serect</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312163958664.png" alt="image-20220312163958664"></p>
+</li>
+<li><p>base64编码</p>
+<ul>
+<li>docker仓库第三方需解密</li>
+<li>可破解</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>小结</p>
+<ul>
+<li>deployment</li>
+<li>其他工作负载</li>
+<li>pod</li>
+<li>service</li>
+<li>ingress</li>
+<li>pvc</li>
+<li>configmap</li>
+<li>serect</li>
+</ul>
+</li>
+</ul>
+<h1 id="kubeSphere"><a href="#kubeSphere" class="headerlink" title="kubeSphere"></a>kubeSphere</h1><ul>
+<li><p>kubesphere</p>
+<ul>
+<li><p>简介</p>
+<ul>
+<li>可视化界面</li>
+<li>多租户</li>
+<li>多k8s集群管理</li>
+<li>CI/CD</li>
+<li>微服务治理：服务网格</li>
+<li>应用管理</li>
+</ul>
+</li>
+<li><p>安装</p>
+<ul>
+<li><p>k8s安装</p>
+<ul>
+<li>默认存储类型nfs</li>
+<li>metrics-server</li>
+<li>全功能安装</li>
+</ul>
+</li>
+<li><p>linux安装</p>
+<ul>
+<li><p>单节点一键安装</p>
+<ul>
+<li>kubekey</li>
+</ul>
+</li>
+<li><p>多节点安装</p>
+<ul>
+<li>kubekey</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312164547433.png" alt="image-20220312164547433"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>多租户管理</p>
+</li>
+<li><p>中间件部署</p>
+<ul>
+<li><p>手动部署</p>
+<ul>
+<li>依据docker hub文档</li>
+<li>configmap</li>
+<li>pvc</li>
+<li>部署工作负载<ul>
+<li>镜像、资源、端口</li>
+<li>环境变量、配置、挂载文件</li>
+</ul>
+</li>
+<li>部署服务<ul>
+<li>暴露<ul>
+<li>集群内部通过域名访问（自动）</li>
+<li>集群外部<ul>
+<li>指定工作负载，集群外访问</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312164602153.png" alt="image-20220312164602153"></p>
+</li>
+<li><p>直接部署应用（从应用商店）</p>
+<ul>
+<li>要自己打开clusterConfiguration</li>
+</ul>
+</li>
+<li><p>应用仓库</p>
+<ul>
+<li>helm-k8s包管理仓库</li>
+<li>添加应用仓库</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>应用部署cloud</p>
+<ul>
+<li><p>数据层</p>
+</li>
+<li><p>微服务治理层</p>
+</li>
+<li><p>微服务层</p>
+<p>​            <img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312164622245.png" alt="image-20220312164622245"></p>
+<ul>
+<li>制作镜像<ul>
+<li>docker file</li>
+<li>maven打包</li>
+</ul>
+</li>
+<li>推送镜像<ul>
+<li>阿里云镜像仓库</li>
+<li>应用部署</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>前端层</p>
+<ul>
+<li><p>基础镜像nginx</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312164642652.png" alt="image-20220312164642652"></p>
+</li>
+<li><p>构建镜像</p>
+</li>
+<li><p>部署</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312164652308.png" alt="image-20220312164652308"></p>
+</li>
+<li><p>存活检查：探针</p>
+</li>
+</ul>
+</li>
+<li><p>devops</p>
+<ul>
+<li><p>敏捷开发</p>
+</li>
+<li><p>全链路自动化</p>
+</li>
+<li><p>cloud应用上云</p>
+<ul>
+<li><p>中间件层</p>
+<ul>
+<li>手动构建服务</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312164744707.png" alt="image-20220312164744707"></p>
+</li>
+<li><p>微服务层</p>
+<ul>
+<li>生产环境配置抽取</li>
+<li>nacos配置中心<ul>
+<li>域名地址配置中间件</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>流水线</p>
+<ul>
+<li><p>流水线模板</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312164758372.png" alt="image-20220312164758372"></p>
+</li>
+<li><p>第一步-拉取代码</p>
+</li>
+<li><p>第二步-项目编译</p>
+<ul>
+<li>配置maven阿里云镜像<ul>
+<li>修改ks-devops-agent配置</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>第三步-构建镜像</p>
+<ul>
+<li><p>基础操作</p>
+</li>
+<li><p>并发构建</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312164807965.png" alt="image-20220312164807965"></p>
+</li>
+</ul>
+</li>
+<li><p>第四步-推送镜像</p>
+<ul>
+<li><p>基础操作</p>
+<ul>
+<li>镜像仓库凭证</li>
+</ul>
+</li>
+<li><p>并发推送</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312164813947.png" alt="image-20220312164813947"></p>
+</li>
+</ul>
+</li>
+<li><p>第五步-部署到dev环境</p>
+<ul>
+<li><p>微服务准备deploy.yaml部署文件</p>
+</li>
+<li><p>镜像凭证</p>
+<ul>
+<li>阿里云仓库密钥</li>
+</ul>
+</li>
+<li><p>并行部署</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312164820639.png" alt="image-20220312164820639"></p>
+</li>
+<li><p>就绪探针</p>
+</li>
+</ul>
+</li>
+<li><p>第六步-系统邮件</p>
+</li>
+</ul>
+</li>
+<li><p>前端项目</p>
+<ul>
+<li><p>流水线</p>
+<ul>
+<li>基础环境nodejs</li>
+<li>拉取代码</li>
+<li>项目安装依赖、编译</li>
+<li>构建镜像<ul>
+<li>docker file</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>推送镜像</p>
+</li>
+<li><p>部署到dev环境</p>
+<ul>
+<li>deploy.yaml</li>
+</ul>
+</li>
+<li><p>发送确认邮件</p>
+</li>
+</ul>
+</li>
+<li><p>部署nust-site前端项目</p>
+<ul>
+<li><p>基于nust服务端渲染</p>
+</li>
+<li><p>打包镜像</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312164832626.png" alt="image-20220312164832626"></p>
+</li>
+<li><p>可以请求一切走集群内网（服务端渲染）</p>
+</li>
+</ul>
+</li>
+<li><p>webhook自动启动流水线</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312164847450.png" alt="image-20220312164847450"></p>
+<ul>
+<li><p>写完代码提交</p>
+</li>
+<li><p>给指定地方发请求</p>
+</li>
+<li><p>流水线自动运行</p>
+</li>
+<li><p>创建webhook：gitee配置</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="kubekey、devops深入、应用管理、服务网格istio、k8s可观测性、kubevirt"><a href="#kubekey、devops深入、应用管理、服务网格istio、k8s可观测性、kubevirt" class="headerlink" title="kubekey、devops深入、应用管理、服务网格istio、k8s可观测性、kubevirt"></a>kubekey、devops深入、应用管理、服务网格istio、k8s可观测性、kubevirt</h1><ul>
+<li><p>kubekey运维高可用集群</p>
+<ul>
+<li><p>Kubekey介绍</p>
+<ul>
+<li>kubeadm、kops、kubespray方式<ul>
+<li>容器环境、管理证书</li>
+<li>apiserver负载均衡器</li>
+<li>etcd等</li>
+</ul>
+</li>
+<li>kubekey方式<ul>
+<li>部署k8s、k3s</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>部署高可用k8s集群</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312165738542.png" alt="image-20220312165738542"></p>
+<ul>
+<li><p>外部负载均衡</p>
+</li>
+<li><p>内部负载均衡</p>
+</li>
+<li><p>kubekey部署高可用集群</p>
+</li>
+</ul>
+</li>
+<li><p>kubekey集群配置文件</p>
+<ul>
+<li>hosts：ip、user</li>
+</ul>
+</li>
+<li><p>k8s增删集群节点</p>
+</li>
+<li><p>集群证书管理</p>
+</li>
+<li><p>kubesphere启用可插拔组件</p>
+</li>
+<li><p>节点管理</p>
+</li>
+</ul>
+</li>
+<li><p>devops深入</p>
+<ul>
+<li><p>devops元素周期表</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312165317185.png" alt="image-20220312165317185"></p>
+</li>
+<li><p>devops流程</p>
+</li>
+<li><p>devops生命周期</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312165751201.png" alt="image-20220312165751201"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312165800148.png" alt="image-20220312165800148"></p>
+</li>
+<li><p>devops流水线</p>
+</li>
+<li><p>质量扫描&amp;单元测试&amp;制品管理</p>
+</li>
+<li><p>自动部署构建</p>
+</li>
+<li><p>devops自动部署</p>
+</li>
+<li><p>source to images 发布应用</p>
+<ul>
+<li>无需dockerfile</li>
+<li>通过github代码地址</li>
+</ul>
+</li>
+<li><p>binary to image发布应用</p>
+<ul>
+<li>通过jar包</li>
+</ul>
+</li>
+<li><p>Jenkinsfile部署流水线</p>
+</li>
+</ul>
+</li>
+<li><p>kubesphere备份与恢复</p>
+<ul>
+<li>多节点模式</li>
+<li>master节点启停</li>
+<li>woker节点启停</li>
+<li>集群启停</li>
+</ul>
+</li>
+<li><p>云原生应用管理</p>
+<ul>
+<li>调试应用</li>
+<li>应用调度</li>
+<li>helm<ul>
+<li>helm及应用仓库</li>
+<li>开发helm</li>
+<li>k8s应用声明周期</li>
+<li>应用仓库管理</li>
+<li>应用管理场景</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>kubernetes federation</p>
+</li>
+<li><p>服务网格架构</p>
+<ul>
+<li><p>微服务</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312165816353.png" alt="image-20220312165816353"></p>
+<ul>
+<li><p>微服务框架挑战</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312165824002.png" alt="image-20220312165824002"></p>
+<ul>
+<li>过于绑定技术栈</li>
+<li>多语言受限</li>
+<li>代码侵入度过高</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>架构</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312165831921.png" alt="image-20220312165831921"></p>
+<ul>
+<li><p>side car</p>
+</li>
+<li><p>服务网格</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312165836512.png" alt="image-20220312165836512"></p>
+<ul>
+<li>一组轻量级网络代理实现</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>istio</p>
+<ul>
+<li><p>架构</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312165844680.png" alt="image-20220312165844680"></p>
+</li>
+<li><p>安装部署</p>
+</li>
+<li><p>测试项目部署</p>
+</li>
+<li><p>isito核心概念</p>
+<ul>
+<li>虚拟服务</li>
+<li>目标规则</li>
+</ul>
+</li>
+<li><p>kubesphere启用服务治理</p>
+<ul>
+<li><p>启用istio</p>
+</li>
+<li><p>创建服务</p>
+</li>
+<li><p>服务治理</p>
+<ul>
+<li><p>链路追踪</p>
+</li>
+<li><p>流量监控</p>
+</li>
+<li><p>灰度发布</p>
+<ul>
+<li><p>金丝雀发布</p>
+<ul>
+<li>流量手动分配</li>
+</ul>
+</li>
+<li><p>达到足够上线条件</p>
+<ul>
+<li>接管</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>k8s可观测性</p>
+<ul>
+<li>日志系统</li>
+</ul>
+</li>
+</ul>
+<pre><code>+ 日志安装
++ kubesphere可插拔式安装
++ cluster configuration
+
+  + logging
+
+    + 集合fluent bit
+
++ 日志查看
+
+
+  + 容器日志查询
+</code></pre>
+<ul>
+<li>日志检索与落盘日志收集</li>
+</ul>
+<pre><code>+ 开启日志收集
++ 创建工作负载
+
+  + alpine镜像
+
+    + 启动命令
+  + 挂载pvc
+</code></pre>
+<ul>
+<li><p>常见问题</p>
+<ul>
+<li>存储外部es，关闭内部es</li>
+<li>日志保留日期</li>
+</ul>
+</li>
+<li><p>监控与预警</p>
+<ul>
+<li><p>Prometheus</p>
+<ul>
+<li><p>安装node explorer</p>
+</li>
+<li><p>promQL</p>
+</li>
+<li><p>告警处理</p>
+<ul>
+<li>告警规则</li>
+</ul>
+</li>
+<li><p>operator</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>  + 控制中心
+</code></pre>
+<ul>
+<li><p>kubesphere监控</p>
+<ul>
+<li>基于Prometheus</li>
+</ul>
+</li>
+<li><p>费率统计</p>
+</li>
+<li><p>kubevirt虚拟机管理</p>
+<ul>
+<li><p>虚拟化技术</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312165923874.png" alt="image-20220312165923874"></p>
+</li>
+<li><p>kubevirt</p>
+</li>
+<li><p>KSV平台</p>
+</li>
+</ul>
+</li>
+<li><p>CKA、CKS</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312170342258.png" alt="image-20220312170342258"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">gca</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://fireonice.github.io/2022/03/12/%E4%BA%91%E5%8E%9F%E7%94%9F%E5%AE%9E%E6%88%98/">https://fireonice.github.io/2022/03/12/%E4%BA%91%E5%8E%9F%E7%94%9F%E5%AE%9E%E6%88%98/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://fireonice.github.io" target="_blank">gca的学习录</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E4%BA%A7%E5%93%81%E5%BC%80%E5%8F%91/">产品开发</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312170342258.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/03/11/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E-k8s-%E8%87%AA%E5%8A%A8%E5%8C%96cicd&amp;%E6%9C%80%E7%BB%88%E9%83%A8%E7%BD%B2/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/cicd-tools-fullsize.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">谷粒商城——k8s-DevOps-CI/CD&amp;最终部署</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/03/06/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E-%E4%BA%91%E5%8E%9F%E7%94%9F%E6%A0%B8%E5%BF%83-Kubernetes/" title="谷粒商城——云原生核心-Kubernetes"><img class="cover" src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220306230401741.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-06</div><div class="title">谷粒商城——云原生核心-Kubernetes</div></div></a></div><div><a href="/2022/03/11/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E-k8s-%E8%87%AA%E5%8A%A8%E5%8C%96cicd&%E6%9C%80%E7%BB%88%E9%83%A8%E7%BD%B2/" title="谷粒商城——k8s-DevOps-CI/CD&最终部署"><img class="cover" src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/cicd-tools-fullsize.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-11</div><div class="title">谷粒商城——k8s-DevOps-CI/CD&最终部署</div></div></a></div><div><a href="/2022/02/17/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E-session%E5%85%B1%E4%BA%AB&sso&ThreadLocal/" title="谷粒商城——session共享&sso&ThreadLocal"><img class="cover" src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%E6%B5%81%E7%A8%8B.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-17</div><div class="title">谷粒商城——session共享&sso&ThreadLocal</div></div></a></div><div><a href="/2022/02/14/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E-%E5%8E%8B%E6%B5%8B/" title="谷粒商城——性能压测"><img class="cover" src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220214145742455.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-14</div><div class="title">谷粒商城——性能压测</div></div></a></div><div><a href="/2022/03/08/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E-%E4%BA%91%E5%8E%9F%E7%94%9FPaaS%E5%B9%B3%E5%8F%B0Kubesphere/" title="谷粒商城——云原生Pass-Kubesphere&集群搭建"><img class="cover" src="https://www.icode9.com/i/ll/?i=20210712161032787.png?,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zMjE5Njg5Mw==,size_16,color_FFFFFF,t_70" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-08</div><div class="title">谷粒商城——云原生Pass-Kubesphere&集群搭建</div></div></a></div><div><a href="/2022/02/12/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E-%E5%88%86%E5%B8%83%E5%BC%8F%E5%9F%BA%E7%A1%80/" title="谷粒商城——分布式基础-全栈开发篇"><img class="cover" src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220212201439633.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-12</div><div class="title">谷粒商城——分布式基础-全栈开发篇</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81NTMwMS8zMTc2OA=="></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/./img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220209232417.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">gca</div><div class="author-info__description">gca的学习录，欢迎访问！</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/fireonice" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:1637872839@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/fireonice.github.io" target="_blank" title="博客"><i class="fab fa-algolia"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">3D 博客，点此进入！<a target="_blank" href="https://fireonice.github.io/fireonice-3D.github.io/"><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220211111643538.png"></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker"><span class="toc-text">Docker</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#k8s"><span class="toc-text">k8s</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#kubeSphere"><span class="toc-text">kubeSphere</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#kubekey%E3%80%81devops%E6%B7%B1%E5%85%A5%E3%80%81%E5%BA%94%E7%94%A8%E7%AE%A1%E7%90%86%E3%80%81%E6%9C%8D%E5%8A%A1%E7%BD%91%E6%A0%BCistio%E3%80%81k8s%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7%E3%80%81kubevirt"><span class="toc-text">kubekey、devops深入、应用管理、服务网格istio、k8s可观测性、kubevirt</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/03/12/%E4%BA%91%E5%8E%9F%E7%94%9F%E5%AE%9E%E6%88%98/" title="云原生实战"><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220312170342258.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="云原生实战"/></a><div class="content"><a class="title" href="/2022/03/12/%E4%BA%91%E5%8E%9F%E7%94%9F%E5%AE%9E%E6%88%98/" title="云原生实战">云原生实战</a><time datetime="2022-03-12T08:08:12.262Z" title="发表于 2022-03-12 16:08:12">2022-03-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/11/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E-k8s-%E8%87%AA%E5%8A%A8%E5%8C%96cicd&amp;%E6%9C%80%E7%BB%88%E9%83%A8%E7%BD%B2/" title="谷粒商城——k8s-DevOps-CI/CD&amp;最终部署"><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/cicd-tools-fullsize.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="谷粒商城——k8s-DevOps-CI/CD&amp;最终部署"/></a><div class="content"><a class="title" href="/2022/03/11/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E-k8s-%E8%87%AA%E5%8A%A8%E5%8C%96cicd&amp;%E6%9C%80%E7%BB%88%E9%83%A8%E7%BD%B2/" title="谷粒商城——k8s-DevOps-CI/CD&amp;最终部署">谷粒商城——k8s-DevOps-CI/CD&amp;最终部署</a><time datetime="2022-03-11T04:01:57.157Z" title="发表于 2022-03-11 12:01:57">2022-03-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/08/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E-%E4%BA%91%E5%8E%9F%E7%94%9FPaaS%E5%B9%B3%E5%8F%B0Kubesphere/" title="谷粒商城——云原生Pass-Kubesphere&amp;集群搭建"><img src="https://www.icode9.com/i/ll/?i=20210712161032787.png?,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zMjE5Njg5Mw==,size_16,color_FFFFFF,t_70" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="谷粒商城——云原生Pass-Kubesphere&amp;集群搭建"/></a><div class="content"><a class="title" href="/2022/03/08/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E-%E4%BA%91%E5%8E%9F%E7%94%9FPaaS%E5%B9%B3%E5%8F%B0Kubesphere/" title="谷粒商城——云原生Pass-Kubesphere&amp;集群搭建">谷粒商城——云原生Pass-Kubesphere&amp;集群搭建</a><time datetime="2022-03-08T06:30:22.132Z" title="发表于 2022-03-08 14:30:22">2022-03-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/06/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E-%E4%BA%91%E5%8E%9F%E7%94%9F%E6%A0%B8%E5%BF%83-Kubernetes/" title="谷粒商城——云原生核心-Kubernetes"><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220306230401741.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="谷粒商城——云原生核心-Kubernetes"/></a><div class="content"><a class="title" href="/2022/03/06/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E-%E4%BA%91%E5%8E%9F%E7%94%9F%E6%A0%B8%E5%BF%83-Kubernetes/" title="谷粒商城——云原生核心-Kubernetes">谷粒商城——云原生核心-Kubernetes</a><time datetime="2022-03-06T14:49:41.462Z" title="发表于 2022-03-06 22:49:41">2022-03-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/04/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E-%E9%AB%98%E5%B9%B6%E5%8F%91%EF%BC%88%E7%A7%92%E6%9D%80%EF%BC%89%E7%B3%BB%E7%BB%9F&amp;Sentinel&amp;%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AA/" title="谷粒商城——高并发（秒杀）系统&amp;Sentinel&amp;链路追踪"><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220304230038114.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="谷粒商城——高并发（秒杀）系统&amp;Sentinel&amp;链路追踪"/></a><div class="content"><a class="title" href="/2022/03/04/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E-%E9%AB%98%E5%B9%B6%E5%8F%91%EF%BC%88%E7%A7%92%E6%9D%80%EF%BC%89%E7%B3%BB%E7%BB%9F&amp;Sentinel&amp;%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AA/" title="谷粒商城——高并发（秒杀）系统&amp;Sentinel&amp;链路追踪">谷粒商城——高并发（秒杀）系统&amp;Sentinel&amp;链路追踪</a><time datetime="2022-03-04T14:07:06.689Z" title="发表于 2022-03-04 22:07:06">2022-03-04</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By gca</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my blog!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">本地搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Livere' === 'Livere' || !false) {
+  if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script></div><script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script><script src="https://cdn.jsdelivr.net/gh/yremp/yremp-js@1.5/sakura.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
