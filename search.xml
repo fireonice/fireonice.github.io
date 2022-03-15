@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>多线程与高并发——共享模型之内存-JMM&amp;指令重排&amp;Volatile&amp;DCL</title>
+      <link href="/2022/03/15/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E9%AB%98%E5%B9%B6%E5%8F%91-%E5%85%B1%E4%BA%AB%E6%A8%A1%E5%9E%8B%E4%B9%8B%E5%86%85%E5%AD%98-JMM&amp;%E6%8C%87%E4%BB%A4%E9%87%8D%E6%8E%92&amp;Volatile&amp;DCL/"/>
+      <url>/2022/03/15/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E9%AB%98%E5%B9%B6%E5%8F%91-%E5%85%B1%E4%BA%AB%E6%A8%A1%E5%9E%8B%E4%B9%8B%E5%86%85%E5%AD%98-JMM&amp;%E6%8C%87%E4%BB%A4%E9%87%8D%E6%8E%92&amp;Volatile&amp;DCL/</url>
+      
+        <content type="html"><![CDATA[<h1 id="共享模型之内存"><a href="#共享模型之内存" class="headerlink" title="共享模型之内存"></a>共享模型之内存</h1><h2 id="Java内存模型-JMM"><a href="#Java内存模型-JMM" class="headerlink" title="Java内存模型-JMM"></a>Java内存模型-JMM</h2><p>JMM 即 Java Memory Model，它定义了主存、工作内存抽象概念，底层对应着 CPU 寄存器、缓存、硬件内存、CPU 指令优化等。</p><p>JMM 体现在以下几个方面</p><ul><li>原子性 - 保证指令不会受到线程上下文切换的影响</li><li>可见性 - 保证指令不会受 cpu 缓存的影响</li><li>有序性 - 保证指令不会受 cpu 指令并行优化的影响</li></ul><h2 id="可见性"><a href="#可见性" class="headerlink" title="可见性"></a>可见性</h2><ul><li><p>可见性</p></li><li><p>一个线程对主存数据修改，对于另外一个线程不可见</p></li><li><p>问题</p><ul><li>初始状态，t线程从主存读取run到工作内存</li><li>因为t要频繁从主内存读取run<ul><li>JIT编译器将run的值存储在工作内存中，减少对主存run的访问<ul><li>CPU高速缓存</li></ul></li></ul></li><li>主线程修改run的值，同步到主存<ul><li>t一直从高速缓存中读</li></ul></li></ul></li><li><p>解决</p><ul><li><p>加上volatile修饰：易变</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220315130021025.png" alt="image-20220315130021025"></p><ul><li>只能修饰成员、静态成员变量<ul><li>必须从主存获取值</li></ul></li></ul></li><li><p>加上synchronize解决</p><ul><li>在Java内存模型中，synchronized规定，线程在加锁时， 先清空工作内存→在主内存中拷贝最新变量的副本到工作内存 →执行完代码→将更改后的共享变量的值刷新到主内存中→释放互斥锁。</li></ul></li></ul></li><li><p>可见性vs原子性</p><ul><li><p>不能防止指令交错，只能保证读到最新的值</p></li><li><p>synchronize保证原子性、可见性，重量级</p></li><li><p>volatile保证可见性，适合一个写一个读</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220315130104860.png" alt="image-20220315130104860"></p><ul><li>print里面有synchronized修饰</li></ul></li></ul></li></ul><h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><ul><li><p>终止模式之两阶段终止模式</p><ul><li><p>原来用打断标记</p><ul><li>正常执行被打断<ul><li>设置打断标记为真<ul><li>不会进入catch，继续运行</li></ul></li></ul></li><li>sleep被打断<ul><li>进入catch，会清除打断标记<ul><li>重新设置打断标记为真</li></ul></li></ul></li></ul></li><li><p>用volatile改进，boolean是否运行</p><ul><li><p>vo 的使用 场景 就是 boolean 变量 可见性</p></li><li><p>不希望sleep，直接interrupt</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220315130122284.png" alt="image-20220315130122284"></p><ul><li>不需要重设打断等</li></ul></li></ul></li></ul></li><li><p>同步之Balking（犹豫模式）</p><ul><li><p>保证某个线程同时只能start一次，监控线程</p></li><li><p>标记：boolean变量，一执行改为true</p></li><li><p>原子性、可见性问题</p><ul><li><p>用synchronize加锁，存在读写操作</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220315130128605.png" alt="image-20220315130128605"></p></li></ul></li><li><p>应用</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220315130134816.png" alt="image-20220315130134816"></p><ul><li>实现线程安全的单例</li></ul></li></ul></li></ul><h2 id="有序性"><a href="#有序性" class="headerlink" title="有序性"></a>有序性</h2><ul><li><p>有序性</p><ul><li><p>指令重排</p></li><li><p>指令重排原理</p><ul><li><p>指令并行优化</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220315130152912.png" alt="image-20220315130152912"></p><ul><li><p>同时执行不同指令</p></li><li><p>前提，不影响结果</p></li></ul></li></ul></li><li><p>问题</p><ul><li>num后执行</li></ul></li><li><p>验证</p><ul><li><p>压测验证</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220315130215855.png" alt="image-20220315130215855"></p></li><li><p>千万次测试，存在指令重排序</p></li></ul></li><li><p>禁用</p><ul><li>ready加上volatile，禁止重排序<ul><li>防止ready之前的代码重排序<ul><li>写屏障</li></ul></li></ul></li><li>volatile保证可见性、有序性</li></ul></li></ul></li></ul><h2 id="Volatile原理"><a href="#Volatile原理" class="headerlink" title="Volatile原理"></a>Volatile原理</h2><ul><li><p>volatile原理</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220315130225821.png" alt="image-20220315130225821"></p><ul><li><p>内存屏障</p><ul><li>变量写指令，后加入写屏障</li><li>变量读指令，前加入读屏障</li></ul></li><li><p>保证可见性</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220315130549217.png" alt="image-20220315130549217"></p><ul><li>写操作时，volatile及以前的，都同步到主存</li><li>读操作时，volatile及以后的，对共享变量读取，加载主存</li></ul></li><li><p>保证有序性</p><ul><li><p>写屏障确保指令重排时，写屏障之前代码，不会重排到写屏障后</p></li><li><p>读屏障确保指令重排时，读屏障之后代码，不会重排到度屏障前</p></li><li><p>不能解决指令交错问题</p><ul><li>只能保证可见性和有序性<ul><li>写，之前更改到主存，不能重排到后面</li><li>读，之后读到最新，无法重排到前面</li></ul></li><li>synchronize都能做到，可见、有序、原子</li></ul></li></ul></li><li><p>dcl</p><ul><li><p>简介</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220315130257450.png" alt="image-20220315130257450"></p><ul><li><p>懒汉式，单例用到才创建</p><ul><li>balking</li><li>只有第一次需要线程保护。后面都是读操作</li></ul></li><li><p>两次检查上锁 </p><ul><li>只在第一次没创建时上锁（外层校验）</li><li>首次访问同步</li></ul></li><li><p>指令重排等问题</p><ul><li>学了多线程现在代码都不敢写了</li></ul></li></ul></li><li><p>问题分析</p><ul><li>synchronized无法禁止指令重排序，但可以保证有序性</li><li>synchronized能保证原子性、可见性和有序性，但不能禁止指令重排</li><li>指令重排，先给变量复制，还没来得及构造对象</li><li>其他线程判断变量不为空，拿到未初始化完毕的单例</li></ul></li><li><p>问题纠正</p><ul><li>think<ul><li>synchronized能保证只有一个线程执行临界区，且保证这个线程在临界区的有序性</li><li>synchronize不能阻止重排序，volatile才能</li><li>synchronized的有序性是建立在原子性的基础上，与volatile实现的有序性原理不同</li><li>因为synchronized修饰的代码块是单线程运行的，因此即使发生重排序也不会影响最终的结果，因此，synchronized是可以保证有序性的，但是保证有序性的方式和volatile不同。</li><li>synchronized不能防止指令重排序，但是重排序是不影响”单线程”的执行结果的，加上synchronized只有一个线程能进入执行指令，所以保证”多线程中的有序性”.</li><li>当前dcl例子中，对INSTANCE的“读取和写入”并没有在synchronized同步块内，不能保证同时只有一个线程执行，而写入的指令中又出现了重排序(写入和构造方法调用)，因此导致了这个问题。</li></ul></li><li>共享变量若完全给synchronize，即使有重排序，也不会有有序性问题</li><li>本例<strong>共享变量没有完全被synchronize保护</strong>，代码块外面还有使用</li><li>内部重排 + 共享变量外部引用 导致问题</li></ul></li><li><p>问题解决</p><ul><li><p>加上volatile</p><ul><li><p>阻止指令重排序</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220315130316484.png" alt="image-20220315130316484"></p></li><li><p>调用构造方法等指令，不能重排到赋值指令之后</p><ul><li>保证先构造再赋值</li></ul></li><li><p>其他线程读取指令时带读屏障，读取最新结果</p><ul><li><p>其实就是保证了每个线程遇到被volatile修饰的变量时都会从主存中重新获取该值</p></li><li><p>我觉得这里解决的是先调构造方法再赋值的指令顺序，而不是图上画的，因为这是2个线程的图，volatile是单线程指令排序，多线程可见性</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220315130324230.png" alt="image-20220315130324230"></p></li></ul></li><li><p>解决dcl单例</p></li></ul></li></ul></li><li><p>happens-before规则</p><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220315130331914.png" alt="image-20220315130331914"></p><ul><li>这块和指令重排那块没有书上讲的好，最好看书</li><li>解锁可见</li><li>volatile可见</li><li>start前写</li><li>线程结束</li><li>打断之前对变量的写，可见</li><li>变量默认值的写</li><li>volatile变量前，其他变量的写，都同步到主存（写屏障）</li></ul></li><li><p>习题</p><ul><li>balking模式<ul><li>volatile情况<ul><li>一个线程写其他读</li><li>dcl 锁外，防止指令重排</li></ul></li></ul></li><li>线程安全单例1<ul><li>final<ul><li>防止子类继承这个单例类 然后重写方法</li></ul></li><li>防止反序列化破坏单例<ul><li>对，当用反序列化创建对象时，会调用readResovle()，因此我们直接给它重写，让它返回我们创建的对象就行了。</li><li>克隆、反射、反序列化都会破坏单例</li></ul></li><li>私有<ul><li>防止直接创建，不能防止反射</li></ul></li><li>初始化对象<ul><li>安全</li></ul></li><li>公共静态方法<ul><li>封装、改造、泛型等</li></ul></li></ul></li><li>线程安全单例<ul><li>枚举单例<ul><li>1、定义时有几个就有几个，静态成员变量</li><li>2、没有并发问题，类加载完成</li><li>3、不能反射破坏</li><li>4、可以防止</li><li>5、饿汉式</li><li>6、加到构造方法中</li></ul></li><li>懒汉式<ul><li>线程安全：类对象锁</li><li>效率低</li></ul></li><li>DCL单例<ul><li>只在创建时加锁，效率提高</li><li>防止第一并发访问，其他线程进入锁，再次创建</li><li>防止重排序</li></ul></li><li>静态内部类，懒汉式<ul><li>类加载是懒惰的</li><li>用getinstance时才触发类加载操作，初始化</li></ul></li><li>类加载由JVM保证线程安全</li></ul></li></ul></li></ul></li></ul></li></ul><h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul><li>JMM<ul><li>可见性<ul><li>JVM缓存优化引起</li></ul></li><li>有序性<ul><li>JVM指令重排优化引起</li></ul></li><li>happens-before规则<ul><li>写读是否可见</li></ul></li></ul></li><li>原理<ul><li>CPU指令并行，重排序问题</li><li>volatile<ul><li>读写屏障</li></ul></li></ul></li><li>模式<ul><li>两阶段终止模式优化<ul><li>volatile改进</li></ul></li><li>同步模式之balking<ul><li>只执行一次情况<ul><li>监控线程启动</li><li>单例</li></ul></li></ul></li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 多线程与高并发 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 多线程与高并发 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>多线程与高并发——共享模型之管程-Monitor&amp;ReentrantLock</title>
       <link href="/2022/03/14/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E9%AB%98%E5%B9%B6%E5%8F%91-%E5%85%B1%E4%BA%AB%E6%A8%A1%E5%9E%8B%E4%B9%8B%E7%AE%A1%E7%A8%8B-Monitor&amp;ReentrantLock/"/>
       <url>/2022/03/14/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E9%AB%98%E5%B9%B6%E5%8F%91-%E5%85%B1%E4%BA%AB%E6%A8%A1%E5%9E%8B%E4%B9%8B%E7%AE%A1%E7%A8%8B-Monitor&amp;ReentrantLock/</url>
@@ -20,7 +45,7 @@
       
         <tags>
             
-            <tag> zookeeper </tag>
+            <tag> 多线程与高并发 </tag>
             
         </tags>
       
@@ -45,7 +70,7 @@
       
         <tags>
             
-            <tag> zookeeper </tag>
+            <tag> 多线程与高并发 </tag>
             
         </tags>
       
