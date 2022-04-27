@@ -1,0 +1,596 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>MySQL——其他数据库对象&amp;8.0新特性 | gca的学习录</title><meta name="keywords" content="Mysql"><meta name="author" content="gca"><meta name="copyright" content="gca"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL——其他数据库对象&amp;8.0新特性">
+<meta property="og:url" content="https://fireonice.github.io/2022/04/27/MySQL-%E5%85%B6%E4%BB%96%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%B9%E8%B1%A1&%E6%96%B0%E7%89%B9%E6%80%A7/index.html">
+<meta property="og:site_name" content="gca的学习录">
+<meta property="og:description" content="Mysql">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/202204272311187.png">
+<meta property="article:published_time" content="2022-04-27T14:36:59.388Z">
+<meta property="article:modified_time" content="2022-04-27T15:50:51.675Z">
+<meta property="article:author" content="gca">
+<meta property="article:tag" content="Mysql">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/202204272311187.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://fireonice.github.io/2022/04/27/MySQL-%E5%85%B6%E4%BB%96%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%B9%E8%B1%A1&amp;%E6%96%B0%E7%89%B9%E6%80%A7/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'MySQL——其他数据库对象&8.0新特性',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-04-27 23:50:51'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="./css/iconfont.css"><link rel="stylesheet" href="./css/card_botui.css"><link rel="stylesheet" href="./css/index.css"><link rel="stylesheet" href="./css/Lete.css"><link rel="stylesheet" href="./css/var.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"><meta name="generator" content="Hexo 6.0.0"><link rel="alternate" href="/atom.xml" title="gca的学习录" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/./img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220330224517.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><div class="data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">42</div></a></div><div class="data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a></div><div class="data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/fireonice/picgo/img/202204272311187.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">gca的学习录</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">MySQL——其他数据库对象&amp;8.0新特性</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-04-27T14:36:59.388Z" title="发表于 2022-04-27 22:36:59">2022-04-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-04-27T15:50:51.675Z" title="更新于 2022-04-27 23:50:51">2022-04-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Mysql/">Mysql</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">9.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>30分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h1><h2 id="数据库对象与视图的理解"><a href="#数据库对象与视图的理解" class="headerlink" title="数据库对象与视图的理解"></a>数据库对象与视图的理解</h2><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/202204272241137.png" alt="image-20220427224153204"></p>
+<p>1、视图一方面可以帮我们使用表的一部分而不是所有的表，另一方面也可以针对不同的用户制定不同的查询视图。</p>
+<p>2、视图</p>
+<ul>
+<li>视图是一种 虚拟表 ，本身是 不具有数据 的，占用很少的内存空间，它是 SQL 中的一个重要概念。</li>
+<li>视图建立在已有表的基础上, 视图赖以建立的这些表称为基表。</li>
+<li>视图的创建和删除只影响视图本身，不影响对应的基表。但是当对视图中的数据进行增加、删除和修改操作时，数据表中的数据会相应地发生变化，反之亦然。</li>
+<li>视图，是向用户提供基表数据的另一种表现形式。通常情况下，小型项目的数据库可以不使用视图，但是在大型项目中，以及数据表比较复杂的情况下，视图的价值就凸显出来了，它可以帮助我们把经常查询的结果集放到虚拟表中，提升使用效率。理解和使用起来都非常方便。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/202204272243698.png" alt="image-20220427224349462"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">+ 常见的数据库对象</span><br><span class="line">    + 表</span><br><span class="line">    + 数据字典</span><br><span class="line">        + 系统表</span><br><span class="line">    + 约束</span><br><span class="line">        + 保证数据完整性</span><br><span class="line">    + 视图</span><br><span class="line">        + 一个或多个数据表里的数据的逻辑显示</span><br><span class="line">    + 索引</span><br><span class="line">        + 提高查询性能</span><br><span class="line">    + 存储过程</span><br><span class="line">    + 存储函数</span><br><span class="line">    + 触发器</span><br><span class="line">        + 事件监听器，完成事件处理</span><br><span class="line">+ 视图</span><br><span class="line">    + 就是原表，只是看到部分的</span><br><span class="line">+ 视图方式存储sql语句</span><br><span class="line">+ 对视图的DML操作等同原表的操作</span><br><span class="line">+ 视图就是简化查询、控制权限</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建视图"><a href="#创建视图" class="headerlink" title="创建视图"></a>创建视图</h2><p>1、单表视图</p>
+<p>说明1：实际上就是我们在 SQL 查询语句的基础上封装了视图 VIEW，这样就会基于 SQL 语句的结果集形成一张虚拟表。</p>
+<p>说明2：在创建视图时，没有在视图名后面指定字段列表，则视图中字段列表默认和SELECT语句中的字段列表一致。如果SELECT语句中给字段取了别名，那么视图中的字段名和别名相同。</p>
+<p>2、多表联合视图</p>
+<p>利用视图对数据进行格式化</p>
+<p>当我们创建好一张视图之后，还可以在它的基础上继续创建视图。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE [OR REPLACE] </span><br><span class="line">[ALGORITHM = &#123;UNDEFINED | MERGE | TEMPTABLE&#125;]</span><br><span class="line">VIEW 视图名称 [(字段列表)]</span><br><span class="line">AS 查询语句 </span><br><span class="line">[WITH [CASCADED|LOCAL] CHECK OPTION]</span><br><span class="line"></span><br><span class="line">CREATE VIEW 视图名称 </span><br><span class="line">AS 查询语句</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">+ 创建视图</span><br><span class="line">+ 针对单表的视图</span><br><span class="line">    + 字段名</span><br><span class="line">    + 聚合函数</span><br><span class="line">+ 针对多表的视图</span><br><span class="line">    + 数据进行格式化</span><br><span class="line">+ 基于视图创建视图</span><br><span class="line">+ 查看视图</span><br><span class="line">    + SHOW TABLES</span><br><span class="line">    + DESC xxx</span><br><span class="line">    + SHOW TABLE STATUS LIEK ‘xxx’</span><br><span class="line">    + SHOW CREATE VIEW xxx</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看、删除、更新、修改视图"><a href="#查看、删除、更新、修改视图" class="headerlink" title="查看、删除、更新、修改视图"></a>查看、删除、更新、修改视图</h2><p>1、查看视图</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#语法1：查看数据库的表对象、视图对象</span><br><span class="line">SHOW TABLES;</span><br><span class="line">#语法2：查看视图的结构</span><br><span class="line">DESC / DESCRIBE 视图名称;</span><br><span class="line">#语法3：查看视图的属性信息</span><br><span class="line">#查看视图信息（显示数据表的存储引擎、版本、数据行数和数据大小等） </span><br><span class="line">SHOW TABLE STATUS LIKE &#x27;视图名称&#x27;\G </span><br><span class="line">#执行结果显示，注释Comment为VIEW，说明该表为视图，其他的信息为NULL，说明这是一个虚表。</span><br><span class="line">#语法4：查看视图的详细定义信息</span><br><span class="line">SHOW CREATE VIEW 视图名称;</span><br></pre></td></tr></table></figure>
+
+<p>2、更新视图</p>
+<p>MySQL支持使用INSERT、UPDATE和DELETE语句对视图中的数据进行插入、更新和删除操作。当视图中的数据发生变化时，数据表中的数据也会发生变化，反之亦然。</p>
+<p>3、不可更新的视图</p>
+<p>虽然可以更新视图数据，但总的来说，视图作为 虚拟表 ，主要用于 方便查询 ，不建议更新视图的数据。<strong>对视图数据的更改，都是通过对实际数据表里数据的操作来完成的。</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/202204272250426.png" alt="image-20220427225001786"></p>
+<p>4、修改视图</p>
+<p>方式1：使用CREATE <strong>OR REPLACE</strong> VIEW 子句<strong>修改视图</strong></p>
+<p>说明：CREATE VIEW 子句中各列的别名应和子查询中各列相对应。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE OR REPLACE VIEW empvu80 (id_number, name, sal, department_id) ASSELECT employee_id, first_name || &#x27; &#x27; || last_name, salary, department_id FROM employees WHERE department_id = 80;</span><br></pre></td></tr></table></figure>
+
+<p>方式2：ALTER VIEW</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ALTER VIEW 视图名称 </span><br><span class="line">AS</span><br><span class="line">查询语句</span><br></pre></td></tr></table></figure>
+
+<p>5、删除视图只是删除视图的定义，并不会删除基表的数据。</p>
+<p>DROP VIEW IF EXISTS 视图名称;</p>
+<p>说明：基于视图a、b创建了新的视图c，如果将视图a或者视图b删除，会导致视图c的查询失败。这样的视图c需要手动删除或修改，否则影响使用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">+ 视图数据和表数据为同一数据</span><br><span class="line">+ 不能更新视图中的数据</span><br><span class="line">    + 视图字段在表中不存在（聚合函数）</span><br><span class="line">+ 视图的行和表的行之间必须存在一对一关系</span><br><span class="line">+ 不能更新</span><br><span class="line">    + JOIN</span><br><span class="line">    + 子查询</span><br><span class="line">    + 聚合函数等</span><br><span class="line">+ 主要为了方便查询！！</span><br><span class="line">+ 优点</span><br><span class="line">    + 操作简单</span><br><span class="line">        + 基于视图简化查询</span><br><span class="line">    + 减少数据冗余</span><br><span class="line">    + 数据安全</span><br><span class="line">        + 控制访问权限</span><br><span class="line">    + 适应需求</span><br><span class="line">        + 可以修改视图而非修改表</span><br><span class="line">    + 分解复杂查询逻辑</span><br><span class="line">        + 多个视图结合完成复杂查询</span><br><span class="line">+ 缺点</span><br><span class="line">    + 维护成本高</span><br><span class="line">    + 表结构改变必须修改视图</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><strong>1.</strong> <strong>操作简单</strong></p>
+<p>将经常使用的查询操作定义为视图，可以使开发人员不需要关心视图对应的数据表的结构、表与表之间的关联关系，也不需要关心数据表之间的业务逻辑和查询条件，而只需要简单地操作视图即可，极大简化了开发人员对数据库的操作。</p>
+<p><strong>2.</strong> <strong>减少数据冗余</strong></p>
+<p>视图跟实际数据表不一样，它存储的是查询语句。所以，在使用的时候，我们要通过定义视图的查询语句来获取结果集。而视图本身不存储数据，不占用数据存储的资源，减少了数据冗余。</p>
+<p><strong>3.</strong> <strong>数据安全</strong></p>
+<p>MySQL将用户对数据的 访问限制 在某些数据的结果集上，而这些数据的结果集可以使用视图来实现。用户不必直接查询或操作数据表。这也可以理解为视图具有 隔离性 。视图相当于在用户和实际的数据表之间加了一层虚拟表。同时，MySQL可以根据权限将用户对数据的访问限制在某些视图上，<strong>用户不需要查询数据表，可以直接通过视图获取数据表中的信息</strong>。这在一定程度上保障了数据表中数据的安全性。</p>
+<p><strong>4.</strong> <strong>适应灵活多变的需求</strong> 当业务系统的需求发生变化后，如果需要改动数据表的结构，则工作量相对较大，可以使用视图来减少改动的工作量。这种方式在实际工作中使用得比较多。</p>
+<p><strong>5.</strong> <strong>能够分解复杂的查询逻辑</strong> 数据库中如果存在复杂的查询逻辑，则可以将问题进行分解，创建多个视图获取数据，再将创建的多个视图结合起来，完成复杂的查询逻辑。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/202204272252632.png" alt="image-20220427225255586"></p>
+<p>如果我们在实际数据表的基础上创建了视图，那么，<strong>如果实际数据表的结构变更了，我们就需要及时对相关的视图进行相应的维护</strong>。特别是嵌套的视图（就是在视图的基础上创建视图），维护会变得比较复杂， 可读性不好 ，容易变成系统的潜在隐患。因为创建视图的 SQL 查询可能会对字段重命名，也可能包含复杂的逻辑，这些都会增加维护的成本。</p>
+<p>实际项目中，如果视图过多，会导致数据库维护成本的问题。</p>
+<p>所以，在创建视图的时候，你要结合实际项目需求，综合考虑视图的优点和不足，这样才能正确使用视图，使系统整体达到最优。</p>
+<h1 id="存储过程与函数"><a href="#存储过程与函数" class="headerlink" title="存储过程与函数"></a>存储过程与函数</h1><p>MySQL从5.0版本开始支持存储过程和函数。存储过程和函数能够将复杂的SQL逻辑封装在一起，应用程序无须关注存储过程和函数内部复杂的SQL逻辑，而只需要简单地调用存储过程和函数即可。</p>
+<h2 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h2><p>1、存储过程的英文是 Stored Procedure 。它的思想很简单，就是一组经过预先编译的 SQL 语句的封装。</p>
+<p>执行过程：存储过程预先存储在 MySQL 服务器上，需要执行的时候，客户端只需要向服务器端发出调用存储过程的命令，服务器端就可以把预先存储好的这一系列 SQL 语句全部执行。</p>
+<p>2、特点</p>
+<ul>
+<li>简化操作，提高了sql语句的重用性，减少了开发程序员的压力</li>
+<li>减少操作过程中的失误，提高效率</li>
+<li>减少网络传输量（客户端不需要把所有的 SQL 语句通过网络发给服务器）</li>
+<li>减少了 SQL 语句暴露在网上的风险，也提高了数据查询的安全性</li>
+</ul>
+<p>3、和视图、函数对比</p>
+<p>它和视图有着同样的优点，清晰、安全，还可以减少网络传输量。不过它和视图不同，视图是 虚拟表 ，通常不对底层数据表直接操作，而存储过程是程序化的 SQL，可以 直接操作底层数据表 ，相比于面向集合的操作方式，能够实现一些更复杂的数据处理。</p>
+<p>一旦存储过程被创建出来，使用它就像使用函数一样简单，我们直接通过调用存储过程名即可。相较于函数，存储过程是 没有返回值 的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+ 视图是虚拟表</span><br><span class="line">+ 存储过程是存储SQL</span><br><span class="line">+ 存储过程没有返回值</span><br><span class="line">+ 分类（携带的参数）</span><br><span class="line">    1、没有参数（无参数无返回） </span><br><span class="line">    2、仅仅带 IN 类型（有参数无返回） </span><br><span class="line">    3、仅仅带 OUT 类型（无参数有返回） </span><br><span class="line">    4、既带 IN 又带 OUT（有参数有返回） </span><br><span class="line">    5、带 INOUT（有参数有返回）</span><br></pre></td></tr></table></figure>
+
+<h2 id="存储过程的创建与调用"><a href="#存储过程的创建与调用" class="headerlink" title="存储过程的创建与调用"></a>存储过程的创建与调用</h2><p>1、参数前面的符号的意思</p>
+<ul>
+<li>IN ：当前参数为输入参数，也就是表示入参；存储过程只是读取这个参数的值。如果没有定义参数种类， 默认就是 IN ，表示输入参数。</li>
+<li>OUT ：当前参数为输出参数，也就是表示出参；执行完成之后，调用这个存储过程的客户端或者应用程序就可以读取这个参数返回的值了。</li>
+<li>INOUT ：当前参数既可以为输入参数，也可以为输出参数。</li>
+</ul>
+<p>2、形参类型可以是 MySQL数据库中的任意类型。</p>
+<p>3、 characteristics 表示创建存储过程时指定的对存储过程的约束条件</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/202204272301235.png" alt="image-20220427230133319"></p>
+<p>4、存储过程体中可以有多条 SQL 语句，如果仅仅一条SQL 语句，则可以省略 BEGIN 和 END</p>
+<p>5、需要设置新的结束标记</p>
+<p>因为MySQL默认的语句结束符号为分号‘;’。为了避免与存储过程中SQL语句结束符相冲突，需要使用DELIMITER改变存储过程的结束符。</p>
+<p>比如：“DELIMITER //”语句的作用是将MySQL的结束符设置为//，并以“END //”结束存储过程。存储过程定义完毕之后再使用“DELIMITER ;”恢复默认结束符。DELIMITER也可以指定其他符号作为结束符。</p>
+<p>当使用DELIMITER命令时，应该避免使用反斜杠（‘\’）字符，因为反斜线是MySQL的转义字符。</p>
+<p>6、存储过程有多种调用方法。存储过程必须使用CALL语句调用，并且存储过程和数据库相关，如果要执行其他数据库中的存储过程，需要指定数据库名称，例如CALL dbname.procname。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CREATE PROCEDURE 存储过程名(IN|OUT|INOUT 参数名 参数类型,...) [characteristics ...] </span><br><span class="line">BEGIN</span><br><span class="line">    存储过程体</span><br><span class="line">END</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">+ 无参数、无返回值</span><br><span class="line">+ 存储过程的调用</span><br><span class="line">    + CALL</span><br><span class="line">+ 带OUT</span><br><span class="line">+ INTO</span><br><span class="line">+ IN参数</span><br><span class="line">+ IN和OUT</span><br><span class="line">    + 返回值不是真正意义上的返回</span><br><span class="line">+ INOUT</span><br><span class="line">idea公司的datagrip可以报错</span><br><span class="line">+ 缺点</span><br></pre></td></tr></table></figure>
+
+<h2 id="存储函数的创建与调用"><a href="#存储函数的创建与调用" class="headerlink" title="存储函数的创建与调用"></a>存储函数的创建与调用</h2><p>学过的函数：LENGTH、SUBSTR、CONCAT等</p>
+<p>1、说明</p>
+<ul>
+<li>参数列表：指定参数为IN、OUT或INOUT只对PROCEDURE是合法的，FUNCTION中总是默认为IN参数</li>
+<li>RETURNS type 语句表示函数返回数据的类型；RETURNS子句只能对FUNCTION做指定，对函数而言这是 强制 的。它用来指定函数的返回类型，而且函数体必须包含一个 RETURN value 语句。</li>
+<li>characteristic 创建函数时指定的对函数的约束。取值与创建存储过程时相同，这里不再赘述。</li>
+<li>函数体也可以用BEGIN…END来表示SQL代码的开始和结束。如果函数体只有一条语句，也可以省略BEGIN…END。 </li>
+</ul>
+<p>2、调用存储函数 </p>
+<p>在MySQL中，存储函数的使用方法与MySQL内部函数的使用方法是一样的。换言之，用户自己定义的存储函数与MySQL内部函数是一个性质的。区别在于，存储函数是 用户自己定义 的，而内部函数是MySQL 的 开发者定义 的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE FUNCTION 函数名(参数名 参数类型,...) RETURNS 返回值类型 [characteristics ...] BEGIN函数体 #函数体中肯定有 RETURN 语句 END</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">+ 存储函数</span><br><span class="line">    + 只有IN参数</span><br><span class="line">    + 一定有return</span><br><span class="line">+ 创建函数</span><br><span class="line">    + 必须指明特性</span><br><span class="line">+ 主要是函数体</span><br><span class="line">    + DML——SELECT查询</span><br><span class="line">+ 对比</span><br><span class="line">    + 存储函数一定有返回值</span><br><span class="line">        + 查询操作使用</span><br><span class="line">    + 存储过程返回值相当于赋给传入的变量、改变引用</span><br><span class="line">        + 更新操作使用</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/202204272305923.png" alt="image-20220427230503246"></p>
+<h2 id="存储过程和函数的查看、修改、删除"><a href="#存储过程和函数的查看、修改、删除" class="headerlink" title="存储过程和函数的查看、修改、删除"></a>存储过程和函数的查看、修改、删除</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SHOW CREATE &#123;PROCEDURE | FUNCTION&#125; 存储过程名或函数名</span><br><span class="line">SHOW &#123;PROCEDURE | FUNCTION&#125; STATUS [LIKE &#x27;pattern&#x27;]</span><br><span class="line">SELECT * FROM information_schema.Routines WHERE ROUTINE_NAME=&#x27;存储过程或函数的名&#x27; [AND ROUTINE_TYPE = &#123;&#x27;PROCEDURE|FUNCTION&#x27;&#125;];</span><br><span class="line"></span><br><span class="line">ALTER &#123;PROCEDURE | FUNCTION&#125; 存储过程或函数的名 [characteristic ...]</span><br><span class="line">&#123; CONTAINS SQL | NO SQL | READS SQL DATA | MODIFIES SQL DATA &#125; | SQL SECURITY &#123; DEFINER | INVOKER &#125; | COMMENT &#x27;string</span><br><span class="line"></span><br><span class="line">DROP &#123;PROCEDURE | FUNCTION&#125; [IF EXISTS] 存储过程或函数的名</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">+ 查看</span><br><span class="line">    + 1：SHOW CREATE</span><br><span class="line">    + 2：SHOW STATUS</span><br><span class="line">    + 3：information_schema.Routines</span><br><span class="line">+ 修改</span><br><span class="line">    + 特性、名字</span><br><span class="line">+ 删除</span><br><span class="line">+ 使用建议</span><br><span class="line">    + 优点</span><br><span class="line">        + 一次编译多次使用</span><br><span class="line">        + 减少开发工作量</span><br><span class="line">        + 封装性</span><br><span class="line">        + 安全</span><br><span class="line">            + 使用权限</span><br><span class="line">        + 减少网络传输</span><br><span class="line">    + 缺点</span><br><span class="line">        + 可移植性差</span><br><span class="line">        + 调试难</span><br><span class="line">        + 版本管理不好</span><br><span class="line">        + 不适合高并发</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><p>优点</p>
+<ul>
+<li>存储过程可以一次编译多次使用。存储过程只在创建时进行编译，之后的使用都不需要重新编译， 这就提升了 SQL 的执行效率。</li>
+<li>可以减少开发工作量。将代码 封装 成模块，实际上是编程的核心思想之一，这样可以把复杂的问题 拆解成不同的模块，然后模块之间可以 重复使用 ，在减少开发工作量的同时，还能保证代码的结构清 晰。</li>
+<li>存储过程的安全性强。我们在设定存储过程的时候可以 设置对用户的使用权限 ，这样就和视图一样具有较强的安全性。 </li>
+<li>可以减少网络传输量。因为代码封装到存储过程中，每次使用只需要调用存储过程即可，这样就减少了网络传输量。 </li>
+<li>良好的封装性。在进行相对复杂的数据库操作时，原本需要使用一条一条的 SQL 语句，可能要连接多次数据库才能完成的操作，现在变成了一次存储过程，只需要 连接一次即可 。 </li>
+</ul>
+<p>缺点</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/202204272308721.png" alt="image-20220427230830120"></p>
+<ul>
+<li>可移植性差。存储过程不能跨数据库移植，比如在 MySQL、Oracle 和 SQL Server 里编写的存储过程，在换成其他数据库时都需要重新编写。</li>
+<li>调试困难。只有少数 DBMS 支持存储过程的调试。对于复杂的存储过程来说，开发和维护都不容易。虽然也有一些第三方工具可以对存储过程进行调试，但要收费。</li>
+<li>存储过程的版本管理很困难。比如数据表索引发生变化了，可能会导致存储过程失效。我们在开发软件的时候往往需要进行版本管理，但是存储过程本身没有版本控制，版本迭代更新的时候很麻烦。</li>
+<li>它不适合高并发的场景。高并发的场景需要减少数据库的压力，有时数据库会采用分库分表的方式，而且对可扩展性要求很高，在这种情况下，存储过程会变得难以维护， 增加数据库的压力 ，显然就不适用了。</li>
+</ul>
+<p>存储过程既方便，又有局限性。尽管不同的公司对存储过程的态度不一，但是对于我们开发人员来说，不论怎样，掌握存储过程都是必备的技能之一。</p>
+<h1 id="变量、流程控制与游标"><a href="#变量、流程控制与游标" class="headerlink" title="变量、流程控制与游标"></a>变量、流程控制与游标</h1><p>在MySQL数据库的存储过程和函数中，可以使用变量来存储查询或计算的中间结果数据，或者输出最终的结果数据。</p>
+<p>在 MySQL 数据库中，变量分为系统变量 以及 用户自定义变量 。 </p>
+<h2 id="系统变量"><a href="#系统变量" class="headerlink" title="系统变量"></a>系统变量</h2><p>1、变量由系统定义，不是用户定义，属于 服务器 层面。启动MySQL服务，生成MySQL服务实例期间，MySQL将为MySQL服务器内存中的系统变量赋值，这些系统变量定义了当前MySQL服务实例的属性、特征。这些系统变量的值要么是 编译MySQL时参数 的默认值，要么是 配置文件 （例如my.ini等）中的参数值。</p>
+<p>系统变量分为全局系统变量（需要添加 global 关键字）以及会话系统变量（需要添加 session 关键字），有时也把全局系统变量简称为全局变量，有时也把会话系统变量称为local变量。<strong>如果不写，默认会话级别。</strong>静态变量（在 MySQL 服务实例运行期间它们的值不能使用 set 动态修改）属于特殊的全局系统变量。</p>
+<p>每一个MySQL客户机成功连接MySQL服务器后，都会产生与之对应的会话。会话期间，MySQL服务实例会在MySQL服务器内存中生成与该会话对应的会话系统变量，这些会话系统变量的初始值是全局系统变量值的复制。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/202204272311187.png" alt="image-20220427231148342"></p>
+<p>2、特点</p>
+<ul>
+<li><p>全局系统变量针对于所有会话（连接）有效，但 不能跨重启</p>
+</li>
+<li><p>会话1对某个全局系统变量值的修改会导致会话2中同一个全局系统变量值的修改。</p>
+</li>
+</ul>
+<p>在MySQL中有些系统变量只能是全局的，例如 max_connections 用于限制服务器的最大连接数；有些系统变量作用域既可以是全局又可以是会话，例如 character_set_client 用于设置客户端的字符集；有些系统变量的作用域只能是当前会话，例如 pseudo_thread_id 用于标记当前会话的 MySQL 连接 ID。 </p>
+<p>3、查看系统变量</p>
+<ul>
+<li><p>查看所有或部分系统变量</p>
+</li>
+<li><p>作为 MySQL 编码规范，MySQL 中的系统变量以 两个“@” 开头，其中“@@global”仅用于标记全局系统变量，“@@session”仅用于标记会话系统变量。“@@”首先标记会话系统变量，如果会话系统变量不存在，则标记全局系统变量。</p>
+</li>
+<li><p>有些时候，数据库管理员需要修改系统变量的默认值，以便修改当前会话或者MySQL服务实例的属性、特征。具体方法：</p>
+<p>方式1：修改MySQL 配置文件 ，继而修改MySQL系统变量的值（该方法需要重启MySQL服务）</p>
+<p>方式2：在MySQL服务运行期间，使用“set”命令重新设置系统变量的值</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">+ 变量</span><br><span class="line">+ 系统变量</span><br><span class="line">    + 全局系统变量</span><br><span class="line">    + 会话系统变量</span><br><span class="line">+ 全局系统变量不能跨重启</span><br><span class="line">+ 会话系统变量，当前会话有效（建立连接）</span><br><span class="line">+ 查看系统变量</span><br><span class="line">+ 查看指定系统变量</span><br><span class="line">    + @@开头表示系统变量</span><br><span class="line">+ 修改系统变量</span><br><span class="line">    + 配置文件</span><br><span class="line">    + set</span><br><span class="line">        + 重启数据库、重启会话连接失效</span><br></pre></td></tr></table></figure>
+
+<h2 id="用户变量"><a href="#用户变量" class="headerlink" title="用户变量"></a>用户变量</h2><p>1、分类</p>
+<p>用户变量是用户自己定义的，作为 MySQL 编码规范，MySQL 中的用户变量以 一个“@” 开头。根据作用范围不同，又分为 会话用户变量 和 局部变量 。</p>
+<ul>
+<li>会话用户变量：作用域和会话变量一样，只对 当前连接 会话有效。</li>
+<li>局部变量：只在 BEGIN 和 END 语句块中有效。局部变量只能在存储过程和函数 中使用。</li>
+</ul>
+<p>2、会话用户变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#方式1：“=”或“:=” </span><br><span class="line">SET @用户变量 = 值; SET @用户变量 := 值; </span><br><span class="line">#方式2：“:=” 或 INTO关键字 </span><br><span class="line">SELECT @用户变量 := 表达式 [FROM 等子句]; SELECT 表达式 INTO @用户变量 [FROM 等子句];</span><br></pre></td></tr></table></figure>
+
+<p>3、局部变量</p>
+<p>定义：可以使用 DECLARE 语句定义一个局部变量</p>
+<p>作用域：仅仅在定义它的 BEGIN … END 中有效</p>
+<p>位置：只能放在 BEGIN … END 中，而且只能放在第一句</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">BEGIN</span><br><span class="line">    #声明局部变量</span><br><span class="line">    DECLARE 变量名1 变量数据类型 [DEFAULT 变量默认值]; </span><br><span class="line">    DECLARE 变量名2,变量名3,... 变量数据类型 [DEFAULT 变量默认值]; </span><br><span class="line">    #为局部变量赋值 </span><br><span class="line">    SET 变量名1 = 值; </span><br><span class="line">    SELECT 值 INTO 变量名2 [FROM 子句]; </span><br><span class="line">    #查看局部变量的值 </span><br><span class="line">    SELECT 变量1,变量2,变量3; </span><br><span class="line">END</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/202204272317622.png" alt="image-20220427231621416"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">+ 用户变量</span><br><span class="line">    + 会话用户变量@</span><br><span class="line">    + 局部变量</span><br><span class="line">        + BEGIN和END中有效</span><br><span class="line">+ 会话用户变量</span><br><span class="line">    + 创建</span><br><span class="line">        + SET</span><br><span class="line">        + SELECT</span><br><span class="line">    + 使用</span><br><span class="line">        + SELECT</span><br><span class="line">+ 局部变量</span><br><span class="line">    + 创建在过程、函数中</span><br><span class="line">    + 创建在第一句</span><br><span class="line">        + DECLARE</span><br><span class="line">    + 指明类型</span><br></pre></td></tr></table></figure>
+
+<h2 id="定义条件与处理程序"><a href="#定义条件与处理程序" class="headerlink" title="定义条件与处理程序"></a>定义条件与处理程序</h2><p>1、定义条件 是事先定义程序执行过程中可能遇到的问题， 处理程序 定义了在遇到问题时应当采取的处理方式，并且保证存储过程或函数在遇到警告或错误时能继续执行。这样可以增强存储程序处理问题的能力，避免程序异常停止运行。</p>
+<p>说明：定义条件和处理程序在存储过程、存储函数中都是支持的。</p>
+<p>2、定义条件</p>
+<p>定义条件就是给MySQL中的错误码命名，这有助于存储的程序代码更清晰。它将一个 错误名字 和 指定的 错误条件 关联起来。这个名字可以随后被用在定义处理程序的 DECLARE HANDLER 语句中。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/202204272319417.png" alt="image-20220427231916497"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#方法1：捕获sqlstate_value </span><br><span class="line">DECLARE CONTINUE HANDLER FOR SQLSTATE &#x27;42S02&#x27; SET @info = &#x27;NO_SUCH_TABLE&#x27;; </span><br><span class="line">#方法2：捕获mysql_error_value </span><br><span class="line">DECLARE CONTINUE HANDLER FOR 1146 SET @info = &#x27;NO_SUCH_TABLE&#x27;; </span><br><span class="line">#方法3：先定义条件，再调用 </span><br><span class="line">DECLARE no_such_table CONDITION FOR 1146; DECLARE CONTINUE HANDLER FOR NO_SUCH_TABLE SET @info = &#x27;NO_SUCH_TABLE&#x27;; </span><br><span class="line">#方法4：使用SQLWARNING </span><br><span class="line">DECLARE EXIT HANDLER FOR SQLWARNING SET @info = &#x27;ERROR&#x27;; </span><br><span class="line">#方法5：使用NOT FOUND </span><br><span class="line">DECLARE EXIT HANDLER FOR NOT FOUND SET @info = &#x27;NO_SUCH_TABLE&#x27;; </span><br><span class="line">#方法6：使用SQLEXCEPTION </span><br><span class="line">DECLARE EXIT HANDLER FOR SQLEXCEPTION SET @info = &#x27;ERROR&#x27;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">+ 定义条件和处理程序</span><br><span class="line">    + 可能遇到的问题</span><br><span class="line">    + 处理方式</span><br><span class="line">+ 定义条件</span><br><span class="line">+ 定义处理程序</span><br><span class="line">    + 处理方式</span><br><span class="line">        + CONTINUE</span><br><span class="line">        + EXIT</span><br><span class="line">        + UNDO</span><br><span class="line">    + 错误类型</span><br><span class="line">        + 错误码、错误字符</span><br><span class="line">        + 错误条件</span><br><span class="line">        + 匹配代码</span><br><span class="line">    + 处理语句</span><br></pre></td></tr></table></figure>
+
+<h2 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h2><p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/202204272321450.png" alt="image-20220427232105832"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">+ IF</span><br><span class="line">    + 这些是dba用的存储过程，大厂对开发也有要求的</span><br><span class="line">    + 举例1</span><br><span class="line">        + IF XXX</span><br><span class="line">            THEN SELECT XXX</span><br><span class="line">        + ELSEIF XXX</span><br><span class="line">            + THEN SELECT</span><br><span class="line">        + END IF</span><br><span class="line">    + 举例2</span><br><span class="line">        + 输入员工id</span><br><span class="line">            + 根据xx情况判断涨薪资等UPDATE</span><br><span class="line">+ CASE语句</span><br><span class="line">    + CASE XX</span><br><span class="line">        + WHEN XX THEN SELECT</span><br><span class="line">        + WHEN XX THEN SELECT</span><br><span class="line">        + ELSE SELECT XXX</span><br><span class="line">    + END CASE</span><br><span class="line">    + 输入员工id</span><br><span class="line">        + 根据xx情况进行不同的操作</span><br><span class="line">        + case：离散型</span><br><span class="line">+ 三种循环</span><br><span class="line">    + loop</span><br><span class="line">    + while</span><br><span class="line">    + repeat</span><br><span class="line">    + （标签）: LOOP</span><br><span class="line">        + XXX</span><br><span class="line">        + IF XX THEN LEAVE （标签）</span><br><span class="line">    + END LOOP（标签）</span><br><span class="line">    + while</span><br><span class="line">        + 循环条件</span><br><span class="line">        + 循环体</span><br><span class="line">        + 迭代条件</span><br><span class="line">    + repeat</span><br><span class="line">        + 上来必先执行一次</span><br><span class="line">    + WHILE √</span><br><span class="line">+ leave</span><br><span class="line">    + break</span><br><span class="line">+ iterate	</span><br><span class="line">    + continue</span><br></pre></td></tr></table></figure>
+
+<h2 id="游标"><a href="#游标" class="headerlink" title="游标"></a>游标</h2><p>1、什么是游标（或光标）</p>
+<p>虽然我们也可以通过筛选条件 WHERE 和 HAVING，或者是限定返回记录的关键字 LIMIT 返回一条记录，但是，却无法在结果集中像指针一样，向前定位一条记录、向后定位一条记录，或者是 随意定位到某一 条记录 ，并对记录的数据进行处理。</p>
+<p>这个时候，就可以用到游标。游标，提供了一种灵活的操作方式，让我们能够对结果集中的每一条记录进行定位，并对指向的记录中的数据进行操作的数据结构。<strong>游标让</strong> <strong>SQL</strong> <strong>这种面集合的语言有了面向过程开发的能力。</strong></p>
+<p>在 SQL 中，游标是一种临时的数据库对象，可以指向存储在数据库表中的数据行指针。这里游标 充当了指针的作用 ，我们可以通过操作游标来对数据行进行操作。</p>
+<p>MySQL中游标可以在存储过程和函数中使用。</p>
+<p>我们就可以通过游标来操作数据行，如图所示此时游标所在的行是“108”的记录，我们也可以在结果集上滚动游标，指向结果集中的任意一行。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/202204272325819.png" alt="image-20220427232523168"></p>
+<p>2、<strong>第一步，声明游标</strong></p>
+<p>在MySQL中，使用DECLARE关键字来声明游标，其语法的基本形式如下：</p>
+<p>要使用 SELECT 语句来获取数据结果集，而此时还没有开始遍历数据，这里 select_statement 代表的是SELECT 语句，返回一个用于创建游标的结果集。</p>
+<p>3、<strong>第二步，打开游标</strong></p>
+<p>当我们定义好游标之后，如果想要使用游标，必须先打开游标。打开游标的时候 SELECT 语句的查询结果集就会送到游标工作区，为后面游标的 逐条读取 结果集中的记录做准备。</p>
+<p>4、<strong>第三步，使用游标（从游标中取得数据）</strong></p>
+<p>注意：<strong>游标的查询结果集中的字段数，必须跟</strong> <strong>INTO</strong> <strong>后面的变量数一致</strong>，否则，在存储过程执行的时候，MySQL 会提示错误</p>
+<p>5、<strong>第四步，关闭游标</strong></p>
+<p>有 OPEN 就会有 CLOSE，也就是打开和关闭游标。当我们使用完游标后需要关闭掉该游标。因为游标会占用系统资源 ，如果不及时关闭，<strong>游标会一直保持到存储过程结束</strong>，影响系统运行的效率。</p>
+<p>6、游标是 MySQL 的一个重要的功能，为 <strong>逐条读取</strong> 结果集中的数据，提供了完美的解决方案。跟在应用层面实现相同的功能相比，游标可以在存储程序中使用，效率高，程序也更加简洁。</p>
+<p>但同时也会带来一些性能问题，比如在使用游标的过程中，会对数据行进行 <strong>加锁</strong> ，这样在业务并发量大的时候，不仅会影响业务之间的效率，还会 <strong>消耗系统资源</strong> ，造成内存不足，这是因为游标是在内存中进行的处理。</p>
+<p>建议：养成用完之后就关闭的习惯，这样才能提高系统的整体效率。</p>
+<p>7、MySQL8全局变量持久化</p>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/202204272328980.png" alt="image-20220427232835869"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DECLARE cursor_name CURSOR FOR select_statement;</span><br><span class="line">OPEN cursor_name</span><br><span class="line">FETCH cursor_name INTO var_name [, var_name] ...</span><br><span class="line">CLOSE cursor_name</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">+ 游标</span><br><span class="line">    + 对每一条记录进行处理</span><br><span class="line">+ 使用步骤</span><br><span class="line">    + 声明游标</span><br><span class="line">        + DECLAER XXX CURSOR FOR XXX</span><br><span class="line">    + 打开游标</span><br><span class="line">        + OPEN</span><br><span class="line">    + 使用游标（从游标中获取数据）</span><br><span class="line">        + FETCH</span><br><span class="line">    + 关闭游标</span><br><span class="line">        + CLOSE</span><br><span class="line">+ 举例cursor</span><br><span class="line">    + 声明局部变量</span><br><span class="line">    + 声明游标</span><br><span class="line">    + 打开游标</span><br><span class="line">    + 循环</span><br><span class="line">        + 使用游标</span><br><span class="line">        + 循环体</span><br><span class="line">    + 关闭游标</span><br><span class="line">+ 小结</span><br><span class="line">    + 优点</span><br><span class="line">        + 逐条读取数据</span><br><span class="line">    + 缺点</span><br><span class="line">        + 使用游标，会对数据加锁</span><br><span class="line">        + 影响系统效率和内存</span><br><span class="line">+ MYSQL8.0</span><br><span class="line">    + 全局变量的持久化</span><br></pre></td></tr></table></figure>
+
+<h1 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h1><p>在实际开发中，我们经常会遇到这样的情况：有 2 个或者多个相互关联的表，如 商品信息 和 库存信息 分别存放在 2 个不同的数据表中，我们在添加一条新商品记录的时候，为了保证数据的完整性，必须同时在库存表中添加一条库存记录。</p>
+<p>这样一来，我们就必须把这两个关联的操作步骤写到程序里面，而且要用 事务 包裹起来，确保这两个操作成为一个 原子操作 ，要么全部执行，要么全部不执行。要是遇到特殊情况，可能还需要对数据进行手动维护，这样就很 容易忘记其中的一步 ，导致数据缺失。</p>
+<p>这个时候，咱们可以使用触发器。<strong>你可以创建一个触发器，让商品信息数据的插入操作自动触发库存数据的插入操作。</strong>这样一来，就不用担心因为忘记添加库存数据而导致的数据缺失了。</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>MySQL从 5.0.2 版本开始支持触发器。MySQL的触发器和存储过程一样，都是嵌入到MySQL服务器的一段程序。</p>
+<p>触发器是由 事件来触发 某个操作，这些事件包括 INSERT 、 UPDATE 、 DELETE 事件。所谓事件就是指用户的动作或者触发某项行为。如果定义了触发程序，当数据库执行这些语句时候，就相当于事件发生了，就会 自动 激发触发器执行相应的操作。</p>
+<p>当对数据表中的数据执行插入、更新和删除操作，需要自动执行一些数据库逻辑时，可以使用触发器来实现。</p>
+<h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><p>1、CREATE TRIGGER</p>
+<p>2、参数</p>
+<ul>
+<li>表名 ：表示触发器监控的对象。</li>
+<li>BEFORE|AFTER ：表示触发的时间。BEFORE 表示在事件之前触发；AFTER 表示在事件之后触发。</li>
+<li>INSERT|UPDATE|DELETE ：表示触发的事件。<ul>
+<li>INSERT 表示插入记录时触发；</li>
+<li>UPDATE 表示更新记录时触发；</li>
+<li>DELETE 表示删除记录时触发</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CREATE TRIGGER 触发器名称 </span><br><span class="line">&#123;BEFORE|AFTER&#125; &#123;INSERT|UPDATE|DELETE&#125; ON 表名 </span><br><span class="line">FOR EACH ROW</span><br><span class="line">触发器执行的语句块;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">+ 触发器</span><br><span class="line">    + 事件操作，触发监听器，执行任务</span><br><span class="line">+ 触发器的创建</span><br><span class="line">    + 作用在某个表上</span><br><span class="line">    + INSERT、UPDATE、DELETE时</span><br><span class="line">    + BEFORE、AFTER进行操作</span><br><span class="line">    + 执行语句</span><br><span class="line">+ 不忘初心！！</span><br><span class="line">+ 创建触发器</span><br><span class="line">    + 插入触发器</span><br><span class="line">+ 示例</span><br><span class="line">    + NEW</span><br><span class="line">        + 获取插入...的那条记录</span><br><span class="line">    + 手动抛出错误</span><br><span class="line">        + SIGNAL xxx</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看、删除触发器"><a href="#查看、删除触发器" class="headerlink" title="查看、删除触发器"></a>查看、删除触发器</h2><p>1、看触发器是查看数据库中已经存在的触发器的定义、状态和语法信息等</p>
+<p>方式1：查看当前数据库的所有触发器的定义</p>
+<p>方式2：查看当前数据库中某个触发器的定义</p>
+<p>方式3：从系统库information_schema的TRIGGERS表中查询“salary_check_trigger”触发器的信息</p>
+<p>2、触发器也是数据库对象，删除触发器也用DROP语句。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SHOW TRIGGERS\G </span><br><span class="line">SHOW CREATE TRIGGER 触发器名 </span><br><span class="line">SELECT * FROM information_schema.TRIGGERS;</span><br><span class="line"></span><br><span class="line">DROP TRIGGER IF EXISTS 触发器名称;</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h2><p>1、优点</p>
+<ul>
+<li><strong>触发器可以确保数据的完整性</strong>。</li>
+<li><strong>触发器可以帮助我们记录操作日志。</strong><ul>
+<li>利用触发器，可以具体记录什么时间发生了什么。比如，记录修改会员储值金额的触发器，就是一个很好的例子。这对我们还原操作执行时的具体场景，更好地定位问题原因很有帮助。</li>
+</ul>
+</li>
+<li><strong>触发器还可以用在操作数据前，对数据进行合法性检查。</strong></li>
+</ul>
+<p>2、缺点</p>
+<ul>
+<li><strong>触发器最大的一个问题就是可读性差。</strong><ul>
+<li>因为触发器存储在数据库中，并且由事件驱动，这就意味着触发器有可能 不受应用层的控制 。这对系统维护是非常有挑战的。</li>
+</ul>
+</li>
+<li><strong>相关数据的变更，可能会导致触发器出错。</strong><ul>
+<li>特别是数据表结构的变更，都可能会导致触发器出错，进而影响数据操作的正常运行。这些都会由于触发器本身的隐蔽性，影响到应用中错误原因排查的效率</li>
+</ul>
+</li>
+</ul>
+<p>注意，如果在子表中定义了外键约束，并且外键指定了ON UPDATE/DELETE CASCADE/SET NULL子句，此时修改父表被引用的键值或删除父表被引用的记录行时，也会引起子表的修改和删除操作，此时基于子表的UPDATE和DELETE语句定义的触发器并不会被激活。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">+ 查看、删除触发器</span><br><span class="line">    + SHOW TRIGGERS</span><br><span class="line">    + DROP TRIGGER</span><br><span class="line">+ 优点</span><br><span class="line">        + 保证数据的完整性</span><br><span class="line">            + 更新其他表的数据</span><br><span class="line">        + 记录操作日志</span><br><span class="line">            + 每次操作记录日志</span><br><span class="line">        + 对数据进行合法性检验</span><br><span class="line">            + 防止录入错误数据</span><br><span class="line">    + 缺点</span><br><span class="line">        + 可读性差</span><br><span class="line">            + 不受应用层控制</span><br><span class="line">        + 数据的更新，可能造成触发器出错</span><br><span class="line">+ 注意点</span><br><span class="line">    + 外键约束引起表的改动，触发器不会激活</span><br><span class="line">+ 复制表结构</span><br><span class="line">+ 触发器</span><br><span class="line">    + 备份存储删除的记录：回收站</span><br></pre></td></tr></table></figure>
+
+<h1 id="MySQL8-0新特性"><a href="#MySQL8-0新特性" class="headerlink" title="MySQL8.0新特性"></a>MySQL8.0新特性</h1><h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>MySQL从5.7版本直接跳跃发布了8.0版本 ，可见这是一个令人兴奋的里程碑版本。MySQL 8版本在功能上做了显著的改进与增强，开发者对MySQL的源代码进行了重构，最突出的一点是多MySQL Optimizer优化器进行了改进。不仅在速度上得到了改善，还为用户带来了更好的性能和更棒的体验。</p>
+<p>新特性</p>
+<p>1.更简便的NoSQL</p>
+<p>2.更好的索引</p>
+<p>3.更完善的JSON支持</p>
+<p>4.安全和账户管理</p>
+<p>5.InnoDB的变化</p>
+<p>6.数据字典</p>
+<p>7.原子数据 </p>
+<p>8.资源管理 </p>
+<p>9.字符集支持</p>
+<p>10.优化器增强</p>
+<p>11.公用表表达式</p>
+<p>12.窗口函数 </p>
+<p>13.正则表达式支持</p>
+<p>14.内部临时表</p>
+<p>15.日志记录</p>
+<p>16.备份锁</p>
+<p>17.增强的MySQL复制</p>
+<p>移除特性</p>
+<p>1.查询缓存</p>
+<p>2.加密相关</p>
+<p>3.空间函数相关</p>
+<p>4.N和NULL</p>
+<p>5.mysql_install_db </p>
+<p>6.通用分区处理程序 </p>
+<p>7.系统和状态变量信息 </p>
+<p>8.mysql_plugin工具</p>
+<h2 id="窗口函数"><a href="#窗口函数" class="headerlink" title="窗口函数"></a>窗口函数</h2><p>1、使用窗口函数，只用了一步就完成了查询。而且，由于没有用到临时表，执行的效率也更高了。很显然，<strong>在需要用到分组统计的结果对每一条记录进行计算的场景下，使用窗口函数更好</strong>。 </p>
+<p>MySQL从8.0版本开始支持窗口函数。窗口函数的作用类似于在查询中对数据进行分组，不同的是，分组操作会把分组的结果聚合成一条记录，而窗口函数是将结果置于每一条数据记录中。</p>
+<p>窗口函数可以分为 静态窗口函数 和 动态窗口函数 。</p>
+<ul>
+<li>静态窗口函数的窗口大小是固定的，不会因为记录的不同而不同；</li>
+<li>动态窗口函数的窗口大小会随着记录的不同而变化。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/202204272342356.png" alt="image-20220427234258613"></p>
+<p>2、语法结构</p>
+<p>函数 OVER（[PARTITION BY 字段名 ORDER BY 字段名 ASC|DESC]） </p>
+<p>函数 OVER 窗口名 … WINDOW 窗口名 AS （[PARTITION BY 字段名 ORDER BY 字段名 ASC|DESC]）</p>
+<ul>
+<li>OVER 关键字指定函数窗口的范围。<ul>
+<li>如果省略后面括号中的内容，则窗口会包含满足WHERE条件的所有记录，窗口函数会基于所有满足WHERE条件的记录进行计算。</li>
+<li>如果OVER关键字后面的括号不为空，则可以使用如下语法设置窗口。</li>
+</ul>
+</li>
+<li>窗口名：为窗口设置一个别名，用来标识窗口。</li>
+<li>PARTITION BY子句：指定窗口函数按照哪些字段进行分组。分组后，窗口函数可以在每个分组中分别执行。</li>
+<li>ORDER BY子句：指定窗口函数按照哪些字段进行排序。执行排序操作使窗口函数按照排序后的数据记录的顺序进行编号。</li>
+<li>FRAME子句：为分区中的某个子集定义规则，可以用来作为滑动窗口使用。</li>
+</ul>
+<p>3、序号函数、分布函数、前后函数、首尾函数、其他函数</p>
+<p>4、窗口函数的特点是可以分组，而且可以在分组内排序。另外，窗口函数不会因为分组而减少原表中的行数，这对我们在原表数据的基础上进行统计和排序非常有用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">+ 新特性</span><br><span class="line">    + nosql支持</span><br><span class="line">    + 更好的索引</span><br><span class="line">    + JSON支持</span><br><span class="line">    + 安全和账户管理</span><br><span class="line">    + InnoDB的优化</span><br><span class="line">    + 数据字典</span><br><span class="line">    + 原子DDL</span><br><span class="line">    + 资源管理</span><br><span class="line">    + 默认字符集</span><br><span class="line">    + 优化器增强</span><br><span class="line">    + 公用表表达式</span><br><span class="line">        + 替换子查询</span><br><span class="line">    + 窗口函数</span><br><span class="line">    + 正则表达式</span><br><span class="line">    + 内部临时表</span><br><span class="line">    + 日志</span><br><span class="line">    + 备份锁</span><br><span class="line">    + mysql复制</span><br><span class="line">+ 新特性1：窗口函数</span><br><span class="line">    + 方式一</span><br><span class="line">        + 使用临时表</span><br><span class="line">    + 方式二：窗口函数</span><br><span class="line">+ 窗口函数</span><br><span class="line">    + 介绍窗口函数</span><br><span class="line">+ 语法结构</span><br><span class="line">    + partition by xxx</span><br><span class="line">        + 分区</span><br><span class="line">    + 函数</span><br><span class="line">+ 分布函数</span><br><span class="line">+ LAG函数、LEAD函数</span><br><span class="line">    + 查询差值</span><br><span class="line">+ 首尾函数</span><br><span class="line">    + FIRST</span><br><span class="line">    + LAST</span><br><span class="line">+ NTILE：分组</span><br></pre></td></tr></table></figure>
+
+<h2 id="公用表表达式"><a href="#公用表表达式" class="headerlink" title="公用表表达式"></a>公用表表达式</h2><p>公用表表达式（或通用表表达式）简称为CTE（Common Table Expressions）。CTE是一个命名的临时结果集，作用范围是当前语句。CTE可以理解成一个可以复用的子查询，当然跟子查询还是有点区别的，CTE可以引用其他CTE，但子查询不能引用其他子查询。所以，可以考虑代替子查询。依据语法结构和执行方式的不同，公用表表达式分为 </p>
+<p>普通公用表表达式 和 递归公用表表达式 2 种。</p>
+<p>1、<strong>普通公用表表达式</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">WITH CTE名称 </span><br><span class="line">AS （子查询）</span><br><span class="line">SELECT|DELETE|UPDATE 语句;</span><br></pre></td></tr></table></figure>
+
+<p>普通公用表表达式类似于子查询，不过，跟子查询不同的是，它可以被多次引用，而且可以被其他的普通公用表表达式所引用。</p>
+<p>2、<strong>递归公用表表达式</strong></p>
+<p>递归公用表表达式也是一种公用表表达式，只不过，除了普通公用表表达式的特点以外，它还有自己的特点，就是<strong>可以调用自己</strong>。</p>
+<p>递归公用表表达式由 2 部分组成，分别是种子查询和递归查询，中间通过关键字 UNION [ALL]进行连接。这里的<strong>种子查询，意思就是获得递归的初始值</strong>。这个查询只会运行一次，以创建初始数据集，之后递归查询会一直执行，直到没有任何新的查询数据产生，递归返回。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">WITH RECURSIVE CTE名称 </span><br><span class="line">AS （子查询）</span><br><span class="line">SELECT|DELETE|UPDATE 语句;</span><br></pre></td></tr></table></figure>
+
+<p>3、总之，递归公用表表达式对于查询一个有共同的根节点的树形结构数据，非常有用。它可以不受层级的限制，轻松查出所有节点的数据。如果用其他的查询方式，就比较复杂了。</p>
+<p>4、公用表表达式的作用是可以代替子查询，而且可以被多次引用。递归公用表表达式对查询有一个共同根节点的树形结构非常高效，可以轻松搞定其他查询方式难以处理的查询。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">gca</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://fireonice.github.io/2022/04/27/MySQL-%E5%85%B6%E4%BB%96%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%B9%E8%B1%A1&amp;%E6%96%B0%E7%89%B9%E6%80%A7/">https://fireonice.github.io/2022/04/27/MySQL-%E5%85%B6%E4%BB%96%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%B9%E8%B1%A1&amp;%E6%96%B0%E7%89%B9%E6%80%A7/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://fireonice.github.io" target="_blank">gca的学习录</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Mysql/">Mysql</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/202204272311187.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/04/26/MySQL-DDL&amp;DML&amp;DCL%E4%BD%BF%E7%94%A8%E7%AF%87/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/202204272209438.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">MySQL——DDL&amp;DML&amp;DCL使用篇</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/04/26/MySQL-DDL&DML&DCL%E4%BD%BF%E7%94%A8%E7%AF%87/" title="MySQL——DDL&DML&DCL使用篇"><img class="cover" src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/202204272209438.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-26</div><div class="title">MySQL——DDL&DML&DCL使用篇</div></div></a></div><div><a href="/2022/04/20/MySQL-%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2&%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0&%E5%AD%90%E6%9F%A5%E8%AF%A2/" title="MySQL——多表查询&聚合函数&子查询"><img class="cover" src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/202204271342403.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-20</div><div class="title">MySQL——多表查询&聚合函数&子查询</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81NTMwMS8zMTc2OA=="></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/./img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220330224517.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">gca</div><div class="author-info__description">gca的学习录，欢迎访问！</div></div><div class="card-info-data is-center"><div class="card-info-data-item"><a href="/archives/"><div class="headline">文章</div><div class="length-num">42</div></a></div><div class="card-info-data-item"><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a></div><div class="card-info-data-item"><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/fireonice" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:1637872839@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/fireonice.github.io" target="_blank" title="博客"><i class="fab fa-algolia"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">3D 博客，点此进入！<a target="_blank" href="https://fireonice.github.io/fireonice-3D.github.io/"><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220211111643538.png"></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE"><span class="toc-text">视图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%B9%E8%B1%A1%E4%B8%8E%E8%A7%86%E5%9B%BE%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-text">数据库对象与视图的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E8%A7%86%E5%9B%BE"><span class="toc-text">创建视图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E3%80%81%E5%88%A0%E9%99%A4%E3%80%81%E6%9B%B4%E6%96%B0%E3%80%81%E4%BF%AE%E6%94%B9%E8%A7%86%E5%9B%BE"><span class="toc-text">查看、删除、更新、修改视图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E4%B8%8E%E5%87%BD%E6%95%B0"><span class="toc-text">存储过程与函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B"><span class="toc-text">存储过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E7%9A%84%E5%88%9B%E5%BB%BA%E4%B8%8E%E8%B0%83%E7%94%A8"><span class="toc-text">存储过程的创建与调用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E5%87%BD%E6%95%B0%E7%9A%84%E5%88%9B%E5%BB%BA%E4%B8%8E%E8%B0%83%E7%94%A8"><span class="toc-text">存储函数的创建与调用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E5%92%8C%E5%87%BD%E6%95%B0%E7%9A%84%E6%9F%A5%E7%9C%8B%E3%80%81%E4%BF%AE%E6%94%B9%E3%80%81%E5%88%A0%E9%99%A4"><span class="toc-text">存储过程和函数的查看、修改、删除</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-1"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E3%80%81%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E4%B8%8E%E6%B8%B8%E6%A0%87"><span class="toc-text">变量、流程控制与游标</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F"><span class="toc-text">系统变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E5%8F%98%E9%87%8F"><span class="toc-text">用户变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E6%9D%A1%E4%BB%B6%E4%B8%8E%E5%A4%84%E7%90%86%E7%A8%8B%E5%BA%8F"><span class="toc-text">定义条件与处理程序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6"><span class="toc-text">流程控制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%B8%E6%A0%87"><span class="toc-text">游标</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="toc-text">触发器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA"><span class="toc-text">创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E3%80%81%E5%88%A0%E9%99%A4%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="toc-text">查看、删除触发器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-2"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MySQL8-0%E6%96%B0%E7%89%B9%E6%80%A7"><span class="toc-text">MySQL8.0新特性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0"><span class="toc-text">窗口函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AC%E7%94%A8%E8%A1%A8%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">公用表表达式</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/04/27/MySQL-%E5%85%B6%E4%BB%96%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%B9%E8%B1%A1&amp;%E6%96%B0%E7%89%B9%E6%80%A7/" title="MySQL——其他数据库对象&amp;8.0新特性"><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/202204272311187.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MySQL——其他数据库对象&amp;8.0新特性"/></a><div class="content"><a class="title" href="/2022/04/27/MySQL-%E5%85%B6%E4%BB%96%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%B9%E8%B1%A1&amp;%E6%96%B0%E7%89%B9%E6%80%A7/" title="MySQL——其他数据库对象&amp;8.0新特性">MySQL——其他数据库对象&amp;8.0新特性</a><time datetime="2022-04-27T14:36:59.388Z" title="发表于 2022-04-27 22:36:59">2022-04-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/26/MySQL-DDL&amp;DML&amp;DCL%E4%BD%BF%E7%94%A8%E7%AF%87/" title="MySQL——DDL&amp;DML&amp;DCL使用篇"><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/202204272209438.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MySQL——DDL&amp;DML&amp;DCL使用篇"/></a><div class="content"><a class="title" href="/2022/04/26/MySQL-DDL&amp;DML&amp;DCL%E4%BD%BF%E7%94%A8%E7%AF%87/" title="MySQL——DDL&amp;DML&amp;DCL使用篇">MySQL——DDL&amp;DML&amp;DCL使用篇</a><time datetime="2022-04-26T06:27:41.383Z" title="发表于 2022-04-26 14:27:41">2022-04-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/20/MySQL-%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2&amp;%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0&amp;%E5%AD%90%E6%9F%A5%E8%AF%A2/" title="MySQL——多表查询&amp;聚合函数&amp;子查询"><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/202204271342403.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MySQL——多表查询&amp;聚合函数&amp;子查询"/></a><div class="content"><a class="title" href="/2022/04/20/MySQL-%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2&amp;%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0&amp;%E5%AD%90%E6%9F%A5%E8%AF%A2/" title="MySQL——多表查询&amp;聚合函数&amp;子查询">MySQL——多表查询&amp;聚合函数&amp;子查询</a><time datetime="2022-04-20T01:09:36.596Z" title="发表于 2022-04-20 09:09:36">2022-04-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/05/%E7%AE%97%E6%B3%95-%E8%B0%B7%E6%AD%8C%E3%80%81%E5%BE%AE%E8%BD%AF%E3%80%81%E4%BA%9A%E9%A9%AC%E9%80%8A%E7%AD%89%E9%9D%A2%E8%AF%95%E9%A2%98/" title="算法——谷歌、微软、亚马逊等面试题"><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220405185119211.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="算法——谷歌、微软、亚马逊等面试题"/></a><div class="content"><a class="title" href="/2022/04/05/%E7%AE%97%E6%B3%95-%E8%B0%B7%E6%AD%8C%E3%80%81%E5%BE%AE%E8%BD%AF%E3%80%81%E4%BA%9A%E9%A9%AC%E9%80%8A%E7%AD%89%E9%9D%A2%E8%AF%95%E9%A2%98/" title="算法——谷歌、微软、亚马逊等面试题">算法——谷歌、微软、亚马逊等面试题</a><time datetime="2022-04-05T10:34:53.755Z" title="发表于 2022-04-05 18:34:53">2022-04-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/03/%E7%AE%97%E6%B3%95-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95&amp;%E5%88%86%E6%B2%BB&amp;%E9%80%92%E5%BD%92&amp;%E5%9B%9E%E6%BA%AF&amp;%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="算法——贪心算法&amp;分治&amp;递归&amp;回溯&amp;动态规划"><img src="https://cdn.jsdelivr.net/gh/fireonice/picgo/img/image-20220403174233069.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="算法——贪心算法&amp;分治&amp;递归&amp;回溯&amp;动态规划"/></a><div class="content"><a class="title" href="/2022/04/03/%E7%AE%97%E6%B3%95-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95&amp;%E5%88%86%E6%B2%BB&amp;%E9%80%92%E5%BD%92&amp;%E5%9B%9E%E6%BA%AF&amp;%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="算法——贪心算法&amp;分治&amp;递归&amp;回溯&amp;动态规划">算法——贪心算法&amp;分治&amp;递归&amp;回溯&amp;动态规划</a><time datetime="2022-04-03T09:32:35.124Z" title="发表于 2022-04-03 17:32:35">2022-04-03</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By gca</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my blog!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">本地搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Livere' === 'Livere' || !false) {
+  if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script></div><script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script><script src="https://cdn.jsdelivr.net/gh/yremp/yremp-js@1.5/sakura.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
